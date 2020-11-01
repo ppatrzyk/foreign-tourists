@@ -28,6 +28,13 @@ def get_variables():
     data = tuple((el.get('id'), el.get('n2')) for el in response.json().get('results'))
     return data
 
+def get_country_data():
+    """
+    get data for one country (country=variable_id)
+    all powiats/years returned here
+    """
+    pass
+
 def main():
     """
     data export
