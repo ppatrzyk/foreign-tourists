@@ -25,23 +25,26 @@ def get_country_ids():
         'subject-id': 'P2759',
     }
     response = requests.get(url, params=params, headers=HEADERS)
-    # tuple of (id, country_name) tuples
+    # tuple of (variable_id, country_name) tuples
     data = tuple((el.get('id'), el.get('n2')) for el in response.json().get('results'))
     return data
 
-def get_country_data():
+def get_country_data(variable_id):
     """
     get data for one country (country=variable_id)
     all powiats/years returned here
     """
-    pass
+    data = {}
+    return data
 
 def main():
     """
     data export
     """
-    data = get_country_ids()
-    print(json.dumps(data, indent=4))
+    country_ids = get_country_ids()
+    for variable_id, country in country_ids.items:
+        country_data = get_country_data(variable_id)
+    # print(json.dumps(data, indent=4))
 
 if __name__ == "__main__":
     main()
