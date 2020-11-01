@@ -9,9 +9,6 @@ FORMAT_PARAMS = {
 
 # Docs:
 # https://api.stat.gov.pl/Home/BdlApi
-
-# links to variables are here, take all one call sufficient
-# https://bdl.stat.gov.pl/api/v1/variables?subject-id=P2759&format=json&page-size=100
     
 # loop through all ids e.g. 148074
 # these will have more than one page
@@ -26,8 +23,9 @@ def get_variables():
         **FORMAT_PARAMS,
         'subject-id': 'P2759',
     }
-    result = requests.get(url, params=params, headers=HEADERS)
-    data = result.json()
+    response = requests.get(url, params=params, headers=HEADERS)
+    # tuple of (id, country_name) tuples
+    data = tuple((el.get('id'), el.get('n2')) for el in response.json().get('results'))
     return data
 
 def main():
