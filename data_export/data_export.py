@@ -14,9 +14,10 @@ FORMAT_PARAMS = {
 # these will have more than one page
 # https://bdl.stat.gov.pl/api/v1/data/by-variable/148095?format=json&page=0&page-size=100
 
-def get_variables():
+def get_country_ids():
     """
     list of variables from given 'topic'
+    here one variable is one foreign country
     """
     url = 'https://bdl.stat.gov.pl/api/v1/variables'
     params = {
@@ -39,7 +40,7 @@ def main():
     """
     data export
     """
-    data = get_variables()
+    data = get_country_ids()
     print(json.dumps(data, indent=4))
 
 if __name__ == "__main__":
