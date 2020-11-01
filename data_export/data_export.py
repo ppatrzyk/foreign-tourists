@@ -11,10 +11,6 @@ FORMAT_PARAMS = {
 
 # Docs:
 # https://api.stat.gov.pl/Home/BdlApi
-    
-# loop through all ids e.g. 148074
-# these will have more than one page
-# https://bdl.stat.gov.pl/api/v1/data/by-variable/148095?format=json&page=0&page-size=100
 
 def get_country_ids():
     """
@@ -42,6 +38,7 @@ def get_country_data(variable_id):
     pages = ceil(total / PAGE_SIZE)
     country_data = []
     for page in range(pages):
+        print(f'page {page}/{pages}\r')
         params = {
             **FORMAT_PARAMS,
             'page': page,
@@ -57,6 +54,7 @@ def main():
     country_ids = get_country_ids()
     all_data = dict()
     for variable_id, country in country_ids.items:
+        print('\n' + '-'*50 + f'\n{country}\n' + '-'*50 + '\n')
         country_data = get_country_data(variable_id)
         all_data[country] = country_data
     with open('data_export/raw_data.json', 'w', encoding='utf-8') as f:
