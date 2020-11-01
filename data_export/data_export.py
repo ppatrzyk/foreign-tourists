@@ -44,7 +44,7 @@ def get_country_data(variable_id):
             'page': page,
         }
         response = requests.get(url, params=params, headers=HEADERS)
-        country_data.append(response.get('results'))
+        country_data.append(response.json().get('results'))
     return country_data
 
 def main():
@@ -53,7 +53,7 @@ def main():
     """
     country_ids = get_country_ids()
     all_data = dict()
-    for variable_id, country in country_ids.items:
+    for variable_id, country in country_ids:
         print('\n' + '-'*50 + f'\n{country}\n' + '-'*50 + '\n')
         country_data = get_country_data(variable_id)
         all_data[country] = country_data
