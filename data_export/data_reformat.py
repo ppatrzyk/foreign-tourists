@@ -10,7 +10,7 @@ def parse_entry(entry):
     data = tuple({'region': entry.get('name'), 'year': el.get('year'), 'count': el.get('val')} for el in values)
     return data
 
-def main():
+def load_all_data():
     """
     docstring
     """
@@ -33,6 +33,12 @@ def main():
                 entries = tuple({'country': country_code, **el} for el in parsed_entries)
                 formatted_data.extend(entries)
     df = pd.DataFrame(formatted_data)
+    return df
+
+def main():
+    """
+    """
+    df = load_all_data()
     print(df)
 
 if __name__ == "__main__":
