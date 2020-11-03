@@ -13,11 +13,15 @@ def main():
     """
     docstring
     """
+    with open('data_export/country_codes.json', 'r') as f:
+        country_codes = json.loads(f.read())
+    country_mapping = {val.get('pl'): key for key, val in country_codes.items()}
     with open('data_export/raw_data.json', 'r') as f:
         raw_data = json.loads(f.read())
     formattted_data = []
     for country, data in raw_data.items():
         print(country)
+        country_code = country_mapping[country]
         for country_outer in data:
             for el in country_outer:
                 try:
@@ -25,9 +29,9 @@ def main():
                 except:
                     print(f'ERROR: {el}')
                     continue
-                entries = tuple({'country': country, **el} for el in parsed_entries)
+                entries = tuple({'country': country_code, **el} for el in parsed_entries)
                 formattted_data.extend(entries)
-    print(len(formattted_data))
+    print(formattted_data[666])
 
 if __name__ == "__main__":
     main()
