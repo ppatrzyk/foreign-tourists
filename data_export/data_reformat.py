@@ -1,5 +1,11 @@
 import json
 
+def parse_entry(entry):
+    """
+    """
+    data = tuple({'region': entry.get('name'), 'year': el.get('year'), 'count': el.get('val')} for el in entry.get('values'))
+    return data
+
 def main():
     """
     docstring
