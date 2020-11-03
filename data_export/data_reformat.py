@@ -40,6 +40,8 @@ def main():
     """
     df = load_all_data()
     print(df)
+    # regex subset
+    # df[df.region.str.contains('rzemyśl', regex = True)]
 
 if __name__ == "__main__":
     main()
