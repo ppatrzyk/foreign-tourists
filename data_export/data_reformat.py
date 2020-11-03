@@ -1,4 +1,5 @@
 import json
+import pandas as pd
 
 def parse_entry(entry):
     """
@@ -18,7 +19,7 @@ def main():
     country_mapping = {val.get('pl'): key for key, val in country_codes.items()}
     with open('data_export/raw_data.json', 'r') as f:
         raw_data = json.loads(f.read())
-    formattted_data = []
+    formatted_data = []
     for country, data in raw_data.items():
         print(country)
         country_code = country_mapping[country]
@@ -30,8 +31,9 @@ def main():
                     print(f'ERROR: {el}')
                     continue
                 entries = tuple({'country': country_code, **el} for el in parsed_entries)
-                formattted_data.extend(entries)
-    print(formattted_data[666])
+                formatted_data.extend(entries)
+    df = pd.DataFrame(formatted_data)
+    print(df)
 
 if __name__ == "__main__":
     main()
