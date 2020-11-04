@@ -1,7 +1,9 @@
 import json
 import pandas as pd
 
-woj = (
+with open('data_export/country_codes.json', 'r') as f:
+    COUNTRY_CODES = json.loads(f.read())
+WOJEWODZTWA = (
     'MAŁOPOLSKIE', 'LUBUSKIE', 'WIELKOPOLSKIE',
     'ZACHODNIOPOMORSKIE', 'DOLNOŚLĄSKIE', 'OPOLSKIE',
     'KUJAWSKO-POMORSKIE', 'POMORSKIE', 'WARMIŃSKO-MAZURSKIE',
@@ -22,9 +24,7 @@ def load_all_data():
     """
     docstring
     """
-    with open('data_export/country_codes.json', 'r') as f:
-        country_codes = json.loads(f.read())
-    country_mapping = {val.get('pl'): key for key, val in country_codes.items()}
+    country_mapping = {val.get('pl'): key for key, val in COUNTRY_CODES.items()}
     with open('data_export/raw_data.json', 'r') as f:
         raw_data = json.loads(f.read())
     formatted_data = []
@@ -49,7 +49,7 @@ def main():
     df = load_all_data()
     df = df[df.country != 'TOTAL']
     total = df[df.region == 'POLSKA']
-    df = df[df.region.isin(woj)]
+    df = df[df.region.isin(WOJEWODZTWA)]
 
     total = pd.merge(
         total,
@@ -58,7 +58,7 @@ def main():
         how='left'
     )
     total['year_prop'] = total['count'] / total['year_total']
-    for wojewodztwo in woj:
+    for wojewodztwo in WOJEWODZTWA:
         woj_data = df[df.region == wojewodztwo]
         woj_data = pd.merge(
             woj_data,
