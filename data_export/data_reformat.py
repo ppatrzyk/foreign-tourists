@@ -58,6 +58,14 @@ def main():
         how='left'
     )
     total['year_prop'] = total['count'] / total['year_total']
+    for wojewodztwo in woj:
+        woj_data = df[df.region == wojewodztwo]
+        woj_data = pd.merge(
+            woj_data,
+            woj_data.groupby('year').sum('count').reset_index().rename({'count': 'year_total'}, axis=1),
+            on='year',
+            how='left'
+        )
 
 if __name__ == "__main__":
     main()
