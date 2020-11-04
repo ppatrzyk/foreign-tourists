@@ -46,6 +46,7 @@ def load_all_data():
 def main():
     """
     """
+    all_data = []
     df = load_all_data()
     df = df[df.country != 'TOTAL']
     total = df[df.region == 'POLSKA']
@@ -58,6 +59,8 @@ def main():
         how='left'
     )
     total['year_prop'] = total['count'] / total['year_total']
+    retain_keys = ('country', 'year', 'count', 'year_prop')
+    all_data['total'] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
     for wojewodztwo in WOJEWODZTWA:
         woj_data = df[df.region == wojewodztwo]
         woj_data = pd.merge(
@@ -67,11 +70,8 @@ def main():
             how='left'
         )
         woj_data['year_prop'] = woj_data['count'] / woj_data['year_total']
-        # TODO write this data somewhere
-        # print('-'*50)
-        # print(wojewodztwo)
-        # print(woj_data[woj_data.year == '2019'].sort_values('year_prop'))
-        # print('-'*50)
+        retain_keys = ('country', 'year', 'count', 'year_prop')
+        all_data['bywojewodztwo'][wojewodztwo] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
     for country in COUNTRY_CODES.keys():
         country_data = df[df.country == country]
         country_data = pd.merge(
@@ -81,11 +81,10 @@ def main():
             how='left'
         )
         country_data['year_prop'] = country_data['count'] / country_data['year_total']
-        # TODO write this data somewhere
-        # print('-'*50)
-        # print(country)
-        # print(country_data[country_data.year == '2019'].sort_values('year_prop'))
-        # print('-'*50)
+        retain_keys = ('region', 'year', 'count', 'year_prop')
+        all_data['bycountry'][country] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
+    with open('tourists_clean.json', 'w') as out_file:
+        out_file.write(json.dumps(all_data))
 
 
 if __name__ == "__main__":
