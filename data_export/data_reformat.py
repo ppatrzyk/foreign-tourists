@@ -72,6 +72,21 @@ def main():
         # print(wojewodztwo)
         # print(woj_data[woj_data.year == '2019'].sort_values('year_prop'))
         # print('-'*50)
+    for country in COUNTRY_CODES.keys():
+        country_data = df[df.country == country]
+        country_data = pd.merge(
+            country_data,
+            country_data.groupby('year').sum('count').reset_index().rename({'count': 'year_total'}, axis=1),
+            on='year',
+            how='left'
+        )
+        country_data['year_prop'] = country_data['count'] / country_data['year_total']
+        # TODO write this data somewhere
+        # print('-'*50)
+        # print(country)
+        # print(country_data[country_data.year == '2019'].sort_values('year_prop'))
+        # print('-'*50)
+
 
 if __name__ == "__main__":
     main()
