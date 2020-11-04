@@ -1,6 +1,14 @@
 import json
 import pandas as pd
 
+woj = (
+    'MAŁOPOLSKIE', 'LUBUSKIE', 'WIELKOPOLSKIE',
+    'ZACHODNIOPOMORSKIE', 'DOLNOŚLĄSKIE', 'OPOLSKIE',
+    'KUJAWSKO-POMORSKIE', 'POMORSKIE', 'WARMIŃSKO-MAZURSKIE',
+    'LUBELSKIE', 'PODKARPACKIE', 'PODLASKIE', 'MAZOWIECKIE',
+    'ŚWIĘTOKRZYSKIE', 'ŁÓDZKIE', 'ŚLĄSKIE',
+)
+
 def parse_entry(entry):
     """
     """
@@ -39,9 +47,8 @@ def main():
     """
     """
     df = load_all_data()
-    print(df)
-    # regex subset
-    # df[df.region.str.contains('rzemyśl', regex = True)]
+    total = df[df.region == 'POLSKA']
+    df = df[df.region.isin(woj)]
 
 if __name__ == "__main__":
     main()
