@@ -29,7 +29,6 @@ def load_all_data():
         raw_data = json.loads(f.read())
     formatted_data = []
     for country, data in raw_data.items():
-        print(country)
         country_code = country_mapping[country]
         for country_outer in data:
             for el in country_outer:
@@ -46,7 +45,7 @@ def load_all_data():
 def main():
     """
     """
-    all_data = []
+    all_data = {}
     df = load_all_data()
     df = df[df.country != 'TOTAL']
     total = df[df.region == 'POLSKA']
