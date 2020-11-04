@@ -47,8 +47,17 @@ def main():
     """
     """
     df = load_all_data()
+    df = df[df.country != 'TOTAL']
     total = df[df.region == 'POLSKA']
     df = df[df.region.isin(woj)]
+
+    total = pd.merge(
+        total,
+        total.groupby('year').sum('count').reset_index().rename({'count': 'year_total'}, axis=1),
+        on='year',
+        how='left'
+    )
+    total['year_prop'] = total['count'] / total['year_total']
 
 if __name__ == "__main__":
     main()
