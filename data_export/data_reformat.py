@@ -45,7 +45,7 @@ def load_all_data():
 def main():
     """
     """
-    all_data = {}
+    all_data = {'bywojewodztwo': {}, 'bycountry': {}}
     df = load_all_data()
     df = df[df.country != 'TOTAL']
     total = df[df.region == 'POLSKA']
@@ -82,7 +82,7 @@ def main():
         country_data['year_prop'] = country_data['count'] / country_data['year_total']
         retain_keys = ('region', 'year', 'count', 'year_prop')
         all_data['bycountry'][country] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
-    with open('data_exports/tourists_clean.json', 'w') as out_file:
+    with open('data_export/tourists_clean.json', 'w') as out_file:
         out_file.write(json.dumps(all_data))
 
 
