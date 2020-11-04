@@ -60,7 +60,7 @@ def main():
     )
     total['year_prop'] = total['count'] / total['year_total']
     retain_keys = ('country', 'year', 'count', 'year_prop')
-    all_data['total'] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
+    all_data['total'] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in total.to_dict(orient='index').items())
     for wojewodztwo in WOJEWODZTWA:
         woj_data = df[df.region == wojewodztwo]
         woj_data = pd.merge(
@@ -71,7 +71,7 @@ def main():
         )
         woj_data['year_prop'] = woj_data['count'] / woj_data['year_total']
         retain_keys = ('country', 'year', 'count', 'year_prop')
-        all_data['bywojewodztwo'][wojewodztwo] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
+        all_data['bywojewodztwo'][wojewodztwo] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in woj_data.to_dict(orient='index').items())
     for country in COUNTRY_CODES.keys():
         country_data = df[df.country == country]
         country_data = pd.merge(
@@ -83,7 +83,7 @@ def main():
         country_data['year_prop'] = country_data['count'] / country_data['year_total']
         retain_keys = ('region', 'year', 'count', 'year_prop')
         all_data['bycountry'][country] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
-    with open('tourists_clean.json', 'w') as out_file:
+    with open('data_exports/tourists_clean.json', 'w') as out_file:
         out_file.write(json.dumps(all_data))
 
 
