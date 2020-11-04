@@ -66,6 +66,12 @@ def main():
             on='year',
             how='left'
         )
+        woj_data['year_prop'] = woj_data['count'] / woj_data['year_total']
+        # TODO write this data somewhere
+        # print('-'*50)
+        # print(wojewodztwo)
+        # print(woj_data[woj_data.year == '2019'].sort_values('year_prop'))
+        # print('-'*50)
 
 if __name__ == "__main__":
     main()
