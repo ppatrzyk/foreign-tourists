@@ -1,2 +1,5 @@
 **/pyvenv
 **/.vscode
+
+/node_modules/
+/public/build/
