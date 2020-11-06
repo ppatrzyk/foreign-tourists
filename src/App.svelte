@@ -1,10 +1,13 @@
 <script>
 	import Map from "./Map.svelte"
+	import Country from "./Country.svelte"
 </script>
 
 <main>
 	<h1>Foreign Tourists</h1>
 	<Map />
+	<Country country="FR" />
+	<Country country="CZ" />
 </main>
 
 <style>
