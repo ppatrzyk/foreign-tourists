@@ -19,11 +19,15 @@
 			.attr("class", "country-border");
 	}
 
-	function update_map(viz_data) {
-		console.log(viz_data)
+	function update_map(app_state, data) {
+		var mode = app_state['mode'];
+		var country = app_state['country'];
+		var mode = app_state['mode'];
+		console.log(mode)
+		console.log(data)
 		return true
 	}
-	$: update_trigger = update_map($app_state);
+	$: update_trigger = update_map($app_state, $tourists);
 
 	onMount(async () => {
 		draw_map($map_geojson)
