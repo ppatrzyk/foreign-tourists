@@ -3,9 +3,9 @@
 	export let country;
 </script>
 
-<main>
+<div>
 	<button on:click="{app_state.set_variable('country', country)}">{country}</button>
-</main>
+</div>
 
 <style>
 

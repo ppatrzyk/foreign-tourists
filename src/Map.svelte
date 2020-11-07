@@ -23,7 +23,7 @@
 	});
 </script>
 
-<main>
+<div>
 	<div>map placeholder</div>
 	<div>{JSON.stringify($app_state)}</div>
 	{#if Object.keys(country_codes).length === 0 & Object.keys(map_geojson).length === 0}
@@ -32,7 +32,7 @@
 		{JSON.stringify(country_codes)}
 		<div id="map"></div>
 	{/if}
-</main>
+</div>
 
 <style>
 
