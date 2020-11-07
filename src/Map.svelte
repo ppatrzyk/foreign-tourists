@@ -27,7 +27,7 @@
 		var current_data = data[mode];
 		if (mode === 'bycountry') {
 			current_data = current_data[country].filter(el => el.year == year)
-			console.log(current_data)
+			by_country_update(current_data)
 		} else if (mode === 'bywojewodztwo') {
 			console.log('not implemented yet')
 		} else if (mode === 'total') {
@@ -36,6 +36,11 @@
 			console.log('invalid mode')
 		}
 		return true
+	}
+	function by_country_update(current_data) {
+		console.log(current_data)
+		// https://github.com/ppatrzyk/filmweb-explorer/blob/master/app/static/js/maked3viz.js
+		// line 255
 	}
 	$: update_trigger = update_map($app_state, $tourists);
 
