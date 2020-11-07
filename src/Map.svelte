@@ -8,12 +8,9 @@
 	const MAP_HEIGHT = 600;
 	
 	function draw_map(data) {
-		console.log('drawing map')
-		console.log(data)
 		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], data);
 		const path = geoPath().projection(projection);
 		var map = select("#map");
-		console.log(map)
 		map.selectAll("path")
 			.data(data.features)
 			.enter()
@@ -21,7 +18,6 @@
 			.attr("d", path)
 			.attr("class", "country-border");
 	}
-	$: map_trigger = draw_map($map_geojson);
 
 	function update_map(viz_data) {
 		console.log(viz_data)
