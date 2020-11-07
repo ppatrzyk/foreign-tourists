@@ -21,8 +21,16 @@
 
 	function update_map(app_state, data) {
 		var mode = app_state['mode'];
+		var year = app_state['year'];
 		var country = app_state['country'];
-		var mode = app_state['mode'];
+		var wojewodztwo = app_state['wojewodztwo'];
+		var current_data = data[mode];
+		if (mode === 'bycountry') {
+			current_data = current_data[country].filter(el => el.year == year)
+			console.log(current_data)
+		} else {
+			console.log('not implemented yet')
+		}
 		console.log(mode)
 		console.log(data)
 		return true
