@@ -30,16 +30,17 @@
 			.attr("d", path)
 			.attr("class", "country-border")
 	}
-
-	draw_map(map_geojson);
 </script>
 
 <div>
 	<div id="map"></div>
 	<div>{JSON.stringify($app_state)}</div>
-
+	<div>{draw_map(map_geojson)}</div>
 </div>
 
 <style>
-
+	.country-border {
+		stroke: white;
+		stroke-width: 0.5;
+	}
 </style>
