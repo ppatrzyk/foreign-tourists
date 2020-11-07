@@ -4,7 +4,7 @@
 </script>
 
 <main>
-	<div>{country}</div>
+	<button on:click="{app_state.set_country(country)}">{country}</button>
 </main>
 
 <style>

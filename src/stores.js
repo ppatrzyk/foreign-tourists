@@ -9,7 +9,13 @@ const app_data = writable({
     wojewodztwo: 'DOLNOŚLĄSKIE'
 });
 const app_state = {
-    subscribe: app_data.subscribe
+    subscribe: app_data.subscribe,
+    set_country: (country) => {
+        app_data.update((current_data) => {
+            current_data['country'] = country
+            return current_data
+        })
+    }
     // TODO
     // functions for changing data here
 };
