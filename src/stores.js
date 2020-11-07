@@ -10,14 +10,12 @@ const app_data = writable({
 });
 const app_state = {
     subscribe: app_data.subscribe,
-    set_country: (country) => {
+    set_variable: (variable, value) => {
         app_data.update((current_data) => {
-            current_data['country'] = country
+            current_data[variable] = value
             return current_data
         })
     }
-    // TODO
-    // functions for changing data here
 };
 
 export default app_state;
