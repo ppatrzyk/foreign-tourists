@@ -11,8 +11,8 @@
 	function draw_map(data) {
 		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], data);
 		const path = geoPath().projection(projection);
-		select("#map")
-			.selectAll("path")
+		var map = select("#map");
+		map.selectAll("path")
 			.data(data.features)
 			.enter()
 			.append("path")
@@ -20,6 +20,12 @@
 			.attr("class", "country-border");
 	}
 	$: map_trigger = draw_map(map_geojson);
+
+	function update_map(viz_data) {
+		console.log(viz_data)
+		return true
+	}
+	$: update_trigger = update_map($app_state);
 </script>
 
 <div>
