@@ -1,11 +1,10 @@
 <script>
 	import app_state from './stores.js';
 	import { geoMercator, geoPath } from 'd3-geo'
-	import { select } from 'd3';
+	import { select } from 'd3-selection';
 
 	export let map_geojson;
 
-	const MAP_SCALE = 2000;
 	const MAP_WIDTH = 600;
 	const MAP_HEIGHT = 600;
 	const MAP_MARGIN = {top: 25, right: 25, bottom: 25, left: 25};
@@ -39,8 +38,8 @@
 </div>
 
 <style>
-	.country-border {
+	/* .country-border {
 		stroke: white;
 		stroke-width: 0.5;
-	}
+	} */
 </style>
