@@ -1,11 +1,15 @@
 
 import { writable } from "svelte/store";
 
-const init_data = writable({
-    key: 'testval'
+const app_data = writable({
+    language: 'en',
+    mode: 'bycountry',
+    year: 2019,
+    country: 'CZ',
+    wojewodztwo: 'DOLNOŚLĄSKIE'
 });
 const app_state = {
-    subscribe: init_data.subscribe
+    subscribe: app_data.subscribe
     // TODO
     // functions for changing data here
 };
