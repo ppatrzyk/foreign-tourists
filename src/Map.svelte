@@ -7,21 +7,17 @@
 
 	const MAP_WIDTH = 600;
 	const MAP_HEIGHT = 600;
-
+	
 	function draw_map(data) {
-		var projection = geoMercator()
-			.fitSize([MAP_WIDTH, MAP_HEIGHT], data);
-
-		var path = geoPath().projection(projection);
-
-		var map = select("#map");
-
-		map.selectAll("path")
-			.data(map_geojson.features)
+		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], data);
+		const path = geoPath().projection(projection);
+		select("#map")
+			.selectAll("path")
+			.data(data.features)
 			.enter()
 			.append("path")
 			.attr("d", path)
-			.attr("class", "country-border")
+			.attr("class", "country-border");
 	}
 	$: map_trigger = draw_map(map_geojson);
 </script>
