@@ -28,11 +28,13 @@
 		if (mode === 'bycountry') {
 			current_data = current_data[country].filter(el => el.year == year)
 			console.log(current_data)
-		} else {
+		} else if (mode === 'bywojewodztwo') {
 			console.log('not implemented yet')
+		} else if (mode === 'total') {
+			console.log('not implemented yet')
+		} else {
+			console.log('invalid mode')
 		}
-		console.log(mode)
-		console.log(data)
 		return true
 	}
 	$: update_trigger = update_map($app_state, $tourists);
