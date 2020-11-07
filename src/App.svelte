@@ -1,25 +1,29 @@
 <script>
-	import { onMount } from 'svelte';
+	import { app_state, country_codes, map_geojson, tourists } from './stores.js';
+	import { onMount } from 'svelte'
 	import Map from "./Map.svelte"
 	import Country from "./Country.svelte"
 
-	let country_codes = {};
-	let map_geojson = {};
 	onMount(async () => {
 		const country_codes_raw = await fetch('data/country_codes.json');
-		country_codes = await country_codes_raw.json();
+		var country_codes_data = await country_codes_raw.json();
+		country_codes.set(country_codes_data)
 		const map_geojson_raw = await fetch('data/wojewodztwa-min.geojson');
-		map_geojson = await map_geojson_raw.json();
+		var map_geojson_data = await map_geojson_raw.json();
+		map_geojson.set(map_geojson_data)
+		const tourists_raw = await fetch('data/tourists_clean.json');
+		var tourists_data = await tourists_raw.json();
+		tourists.set(tourists_data)
 	});
 	
 </script>
 
 <main>
 	<h1>Foreign Tourists</h1>
-	{#if Object.keys(country_codes).length === 0 & Object.keys(map_geojson).length === 0}
+	{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
 		<p>waiting for the promise to resolve...</p>
 	{:else}
-		<Map map_geojson={map_geojson}/>
+		<Map />
 		<Country country="FR" />
 		<Country country="CZ" />
 	{/if}

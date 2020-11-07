@@ -18,4 +18,8 @@ const app_state = {
     }
 };
 
-export default app_state;
+const country_codes = writable({});
+const map_geojson = writable({});
+const tourists = writable({});
+
+export {app_state, country_codes, map_geojson, tourists};
