@@ -4,30 +4,17 @@
 	import Map from "./Map.svelte"
 	import Country from "./Country.svelte"
 
-	function prepare_geojson(geojson, data) {
-		geojson.features.forEach(entry => {
-			var wojewodztwo = entry.properties.nazwa.toUpperCase();
-			console.log(wojewodztwo)
-			// TODO bycountry
-			// data['bycountry']
-
-			// TODO bywojewodztwo
-			// data['bywojewodztwo'][wojewodztwo]
-		});
-		return geojson
-	}
-
 	onMount(async () => {
 		const country_codes_raw = await fetch('data/country_codes.json');
 		var country_codes_data = await country_codes_raw.json();
 		
-		const map_geojson_raw = await fetch('data/wojewodztwa-min.geojson');
+		const map_geojson_raw = await fetch('data/map_data.geojson');
 		var map_geojson_data = await map_geojson_raw.json();
 		
-		const tourists_raw = await fetch('data/tourists_clean.json');
+		const tourists_raw = await fetch('data/tourists_total.json');
 		var tourists_data = await tourists_raw.json();
 
-		map_geojson_data = prepare_geojson(map_geojson_data, tourists_data)
+		console.log(map_geojson_data)
 
 		country_codes.set(country_codes_data)
 		map_geojson.set(map_geojson_data)

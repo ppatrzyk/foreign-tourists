@@ -25,18 +25,18 @@
 		var year = app_state['year'];
 		var country = app_state['country'];
 		var wojewodztwo = app_state['wojewodztwo'];
-		var current_data = data[mode];
-		if (mode === 'bycountry') {
-			current_data = current_data[country].filter(el => el.year == year)
-			by_country_update(current_data)
-		} else if (mode === 'bywojewodztwo') {
-			console.log('not implemented yet')
-		} else if (mode === 'total') {
-			console.log('not implemented yet')
-		} else {
-			console.log('invalid mode')
-		}
-		return true
+		// var current_data = data[mode];
+		// if (mode === 'bycountry') {
+		// 	current_data = current_data[country].filter(el => el.year == year)
+		// 	by_country_update(current_data)
+		// } else if (mode === 'bywojewodztwo') {
+		// 	console.log('not implemented yet')
+		// } else if (mode === 'total') {
+		// 	console.log('not implemented yet')
+		// } else {
+		// 	console.log('invalid mode')
+		// }
+		// return true
 	}
 	function by_country_update(current_data) {
 		console.log(current_data)
