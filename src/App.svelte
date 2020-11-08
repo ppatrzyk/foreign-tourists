@@ -5,11 +5,11 @@
 	import Country from "./Country.svelte"
 
 	function prepare_geojson(geojson, data) {
-		for (var i = 0; i < geojson.features.length; i++) {
-			var wojewodztwo = json.features[i].properties.nazwa;
-			data['bywojewodztwo'][wojewodztwo]
-			// geojson.features[i].properties.count = 
-		}
+		geojson.features.forEach(entry => {
+			var wojewodztwo = entry.properties.nazwa;
+			console.log(wojewodztwo)
+			// data['bywojewodztwo'][wojewodztwo]
+		});
 		return geojson
 	}
 
