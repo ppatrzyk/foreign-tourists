@@ -5,11 +5,25 @@
 	import Country from "./Country.svelte"
 
 	function prepare_geojson(geojson, data) {
+		const years = ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019']
 		geojson.features.forEach(entry => {
 			var wojewodztwo = entry.properties.nazwa.toUpperCase();
 			console.log(wojewodztwo)
 			// TODO bycountry
-			// data['bycountry']
+			for (var key in data.bycountry) {
+				if (!data.bycountry.hasOwnProperty(key)) continue;
+				var country = data.bycountry[key];
+				years.forEach(year => {
+					try {
+						country[year].forEach(entry => {
+							entry.properties[year]['bycountry_prop'][country] = entry.year_prop;
+						});
+					} catch (error) {
+						console.log(error)
+						console.log(`${country} failure`)
+					}
+				});
+			}
 
 			// TODO bywojewodztwo
 			// data['bywojewodztwo'][wojewodztwo]
@@ -28,6 +42,7 @@
 		var tourists_data = await tourists_raw.json();
 
 		map_geojson_data = prepare_geojson(map_geojson_data, tourists_data)
+		console.log(map_geojson_data)
 
 		country_codes.set(country_codes_data)
 		map_geojson.set(map_geojson_data)
