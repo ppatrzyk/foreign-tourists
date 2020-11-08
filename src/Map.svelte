@@ -22,6 +22,12 @@
 			.append("path")
 			.attr("d", path)
 			.attr("class", "country-border");
+		map.selectAll('text')
+			.data(geojson.features)
+			.enter()
+			.append('text')
+			.text('')
+			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
 	}
 
 	function update_map(geojson, app_state) {
@@ -39,20 +45,19 @@
 	}
 	function by_country_render(geojson, country, year) {
 		console.log(`country render called ${country} ${year}`)
-		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
-		const path = geoPath().projection(projection);
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", function(d) {
 				var value = d.properties['bycountry'][year][country]['year_prop'];
-				console.log(value)
-				console.log('fill called')
 				if (value) {
 					return color_scale(value);
 				} else {
 					return missing_color;
 				}
 			})
+		map.selectAll("text")
+			.text(function(d) { return d.properties['bycountry'][year][country]['year_prop']; })
+			
 	}
 	function by_wojewodztwo_render(geojson, year) {
 		console.log(`wojewodztwo render called ${year}`)
