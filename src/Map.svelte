@@ -3,47 +3,65 @@
 	import { onMount } from 'svelte'
 	import { geoMercator, geoPath } from 'd3-geo'
 	import { select } from 'd3-selection';
+	import { scaleSequential } from 'd3-scale';
+	import { interpolateRdYlGn } from 'd3-scale-chromatic';
 
 	const MAP_WIDTH = 600;
 	const MAP_HEIGHT = 600;
+	// https://github.com/d3/d3-scale-chromatic
+	const color_scale = scaleSequential(interpolateRdYlGn);
+	const missing_color = "#000000";
 	
-	function draw_map(data) {
-		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], data);
+	function draw_map(geojson) {
+		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
 		const path = geoPath().projection(projection);
 		var map = select("#map");
 		map.selectAll("path")
-			.data(data.features)
+			.data(geojson.features)
 			.enter()
 			.append("path")
 			.attr("d", path)
 			.attr("class", "country-border");
 	}
 
-	function update_map(app_state) {
+	function update_map(geojson, app_state) {
 		var mode = app_state['mode'];
 		var year = app_state['year'];
 		var country = app_state['country'];
 		if (mode === 'bycountry') {
-			by_country_render(country, year)
+			by_country_render(geojson, country, year)
 		} else if (mode === 'bywojewodztwo') {
-			by_wojewodztwo_render(year)
+			by_wojewodztwo_render(geojson, year)
 		} else {
 			// pass
 		}
 		return true
 	}
-	function by_country_render(country, year) {
+	function by_country_render(geojson, country, year) {
 		console.log(`country render called ${country} ${year}`)
-		// https://github.com/ppatrzyk/filmweb-explorer/blob/master/app/static/js/maked3viz.js
-		// line 255
+		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
+		const path = geoPath().projection(projection);
+		var map = select("#map");
+		map.selectAll("path")
+			.style("fill", function(d) {
+				var value = d.properties['bycountry'][year][country]['year_prop'];
+				console.log(value)
+				console.log('fill called')
+				if (value) {
+					return color_scale(value);
+				} else {
+					return missing_color;
+				}
+			})
 	}
-	function by_wojewodztwo_render(year) {
+	function by_wojewodztwo_render(geojson, year) {
 		console.log(`wojewodztwo render called ${year}`)
 	}
-	$: update_trigger = update_map($app_state);
+	$: update_trigger = update_map($map_geojson, $app_state);
 
 	onMount(async () => {
-		draw_map($map_geojson)
+		draw_map($map_geojson);
+		update_map($map_geojson, $app_state);
 	});
 </script>
 
