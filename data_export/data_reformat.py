@@ -1,6 +1,8 @@
 import json
 import pandas as pd
 
+with open('data_export/wojewodztwa-min.geojson', 'r') as f:
+    geojson = json.loads(f.read())
 with open('data_export/country_codes.json', 'r') as f:
     COUNTRY_CODES = json.loads(f.read())
 WOJEWODZTWA = (
