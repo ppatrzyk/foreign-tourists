@@ -91,6 +91,7 @@ def main():
         retain_keys = ('region', 'year', 'count', 'year_prop')
         bycountry[country] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
 
+    # TODO: REDO this joining is wrong
     for entry in geojson.get('features'):
         properties = entry.get('properties')
         wojewodztwo = properties.get('nazwa').upper()
