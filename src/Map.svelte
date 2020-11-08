@@ -1,5 +1,5 @@
 <script>
-	import { app_state, country_codes, map_geojson, tourists } from './stores.js';
+	import { app_state, map_geojson } from './stores.js';
 	import { onMount } from 'svelte'
 	import { geoMercator, geoPath } from 'd3-geo'
 	import { select } from 'd3-selection';
@@ -19,31 +19,28 @@
 			.attr("class", "country-border");
 	}
 
-	function update_map(app_state, data) {
-		// TODO rething this all data is in geojson already
+	function update_map(app_state) {
 		var mode = app_state['mode'];
 		var year = app_state['year'];
 		var country = app_state['country'];
-		var wojewodztwo = app_state['wojewodztwo'];
-		// var current_data = data[mode];
-		// if (mode === 'bycountry') {
-		// 	current_data = current_data[country].filter(el => el.year == year)
-		// 	by_country_update(current_data)
-		// } else if (mode === 'bywojewodztwo') {
-		// 	console.log('not implemented yet')
-		// } else if (mode === 'total') {
-		// 	console.log('not implemented yet')
-		// } else {
-		// 	console.log('invalid mode')
-		// }
-		// return true
+		if (mode === 'bycountry') {
+			by_country_render(country, year)
+		} else if (mode === 'bywojewodztwo') {
+			by_wojewodztwo_render(year)
+		} else {
+			// pass
+		}
+		return true
 	}
-	function by_country_update(current_data) {
-		console.log(current_data)
+	function by_country_render(country, year) {
+		console.log(`country render called ${country} ${year}`)
 		// https://github.com/ppatrzyk/filmweb-explorer/blob/master/app/static/js/maked3viz.js
 		// line 255
 	}
-	$: update_trigger = update_map($app_state, $tourists);
+	function by_wojewodztwo_render(year) {
+		console.log(`wojewodztwo render called ${year}`)
+	}
+	$: update_trigger = update_map($app_state);
 
 	onMount(async () => {
 		draw_map($map_geojson)
