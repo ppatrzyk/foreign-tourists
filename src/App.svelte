@@ -4,15 +4,24 @@
 	import Map from "./Map.svelte"
 	import Country from "./Country.svelte"
 
+	function prepare_geojson(geojson, data) {
+		return geojson
+	}
+
 	onMount(async () => {
 		const country_codes_raw = await fetch('data/country_codes.json');
 		var country_codes_data = await country_codes_raw.json();
-		country_codes.set(country_codes_data)
+		
 		const map_geojson_raw = await fetch('data/wojewodztwa-min.geojson');
 		var map_geojson_data = await map_geojson_raw.json();
-		map_geojson.set(map_geojson_data)
+		
 		const tourists_raw = await fetch('data/tourists_clean.json');
 		var tourists_data = await tourists_raw.json();
+
+		map_geojson_data = prepare_geojson(map_geojson_data, tourists_data)
+
+		country_codes.set(country_codes_data)
+		map_geojson.set(map_geojson_data)
 		tourists.set(tourists_data)
 	});
 	
