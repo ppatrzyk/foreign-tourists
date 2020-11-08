@@ -105,7 +105,12 @@ def main():
                 properties['bycountry'][year][country] = entry
         for entry in bywojewodztwo[wojewodztwo]:
             year = entry.pop('year')
-            properties['bywojewodztwo'][year] = entry
+            # country = entry.pop('country')
+            try:
+                properties['bywojewodztwo'][year].append(entry)
+            except:
+                properties['bywojewodztwo'][year] = [entry, ]
+
 
     with open('data_export/tourists_total.json', 'w') as out_file:
         out_file.write(json.dumps(total))
@@ -113,6 +118,7 @@ def main():
     with open('data_export/map_data.geojson', 'w') as out_file:
         out_file.write(json.dumps(geojson))
 
+    df.to_csv('data_export/tourist_data.csv')
 
 if __name__ == "__main__":
     main()
