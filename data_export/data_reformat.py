@@ -91,22 +91,21 @@ def main():
         retain_keys = ('region', 'year', 'count', 'year_prop')
         bycountry[country] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
 
-    # TODO: REDO this joining is wrong
     for entry in geojson.get('features'):
         properties = entry.get('properties')
         wojewodztwo = properties.get('nazwa').upper()
         properties['bycountry'] = {year: {} for year in years}
         properties['bywojewodztwo'] = {year: {} for year in years}
-        for country, val in bycountry.items():
-            print(country)
-            for el in val:
-                # print(f'{country}: {el}')
-                year = el.get('year')
-                properties['bycountry'][year][country] = el
-        for wojewodztwo, val in bywojewodztwo.items():
-            for el in val:
-                year = el.get('year')
-                properties['bywojewodztwo'][year][wojewodztwo] = el
+        for country, country_data in bycountry.items():
+            for entry in country_data:
+                if entry.get('region') != wojewodztwo:
+                    continue
+                entry.pop('region')
+                year = entry.pop('year')
+                properties['bycountry'][year][country] = entry
+        for entry in bywojewodztwo[wojewodztwo]:
+            year = entry.pop('year')
+            properties['bywojewodztwo'][year] = entry
 
     with open('data_export/tourists_total.json', 'w') as out_file:
         out_file.write(json.dumps(total))
