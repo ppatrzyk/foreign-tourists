@@ -20,6 +20,7 @@
 	}
 
 	function update_map(app_state, data) {
+		// TODO rething this all data is in geojson already
 		var mode = app_state['mode'];
 		var year = app_state['year'];
 		var country = app_state['country'];

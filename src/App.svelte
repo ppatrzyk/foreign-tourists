@@ -6,8 +6,12 @@
 
 	function prepare_geojson(geojson, data) {
 		geojson.features.forEach(entry => {
-			var wojewodztwo = entry.properties.nazwa;
+			var wojewodztwo = entry.properties.nazwa.toUpperCase();
 			console.log(wojewodztwo)
+			// TODO bycountry
+			// data['bycountry']
+
+			// TODO bywojewodztwo
 			// data['bywojewodztwo'][wojewodztwo]
 		});
 		return geojson
