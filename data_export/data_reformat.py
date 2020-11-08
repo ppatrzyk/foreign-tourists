@@ -1,3 +1,4 @@
+import sys
 import json
 import pandas as pd
 
@@ -62,10 +63,9 @@ def main():
     )
     total['year_prop'] = total['count'] / total['year_total']
     retain_keys = ('country', 'year', 'count', 'year_prop')
-    data = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in total.to_dict(orient='index').items())
-    for year in years:
-        all_data['total'][year] = tuple(el for el in data if el.get('year') == year)
+    total = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in total.to_dict(orient='index').items())
     
+    bywojewodztwo = {}
     for wojewodztwo in WOJEWODZTWA:
         woj_data = df[df.region == wojewodztwo]
         woj_data = pd.merge(
@@ -76,11 +76,9 @@ def main():
         )
         woj_data['year_prop'] = woj_data['count'] / woj_data['year_total']
         retain_keys = ('country', 'year', 'count', 'year_prop')
-        data = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in woj_data.to_dict(orient='index').items())
-        all_data['bywojewodztwo'][wojewodztwo] = {}
-        for year in years:
-            all_data['bywojewodztwo'][wojewodztwo][year] = tuple(el for el in data if el.get('year') == year)
+        bywojewodztwo[wojewodztwo] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in woj_data.to_dict(orient='index').items())
     
+    bycountry = {}
     for country in COUNTRY_CODES.keys():
         country_data = df[df.country == country]
         country_data = pd.merge(
@@ -91,13 +89,29 @@ def main():
         )
         country_data['year_prop'] = country_data['count'] / country_data['year_total']
         retain_keys = ('region', 'year', 'count', 'year_prop')
-        data = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
-        all_data['bycountry'][country] = {}
-        for year in years:
-            all_data['bycountry'][country][year] = tuple(el for el in data if el.get('year') == year)
-    
-    with open('data_export/tourists_clean.json', 'w') as out_file:
-        out_file.write(json.dumps(all_data))
+        bycountry[country] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in country_data.to_dict(orient='index').items())
+
+    for entry in geojson.get('features'):
+        properties = entry.get('properties')
+        wojewodztwo = properties.get('nazwa').upper()
+        properties['bycountry'] = {year: {} for year in years}
+        properties['bywojewodztwo'] = {year: {} for year in years}
+        for country, val in bycountry.items():
+            print(country)
+            for el in val:
+                # print(f'{country}: {el}')
+                year = el.get('year')
+                properties['bycountry'][year][country] = el
+        for wojewodztwo, val in bywojewodztwo.items():
+            for el in val:
+                year = el.get('year')
+                properties['bywojewodztwo'][year][wojewodztwo] = el
+
+    with open('data_export/tourists_total.json', 'w') as out_file:
+        out_file.write(json.dumps(total))
+
+    with open('data_export/map_data.geojson', 'w') as out_file:
+        out_file.write(json.dumps(geojson))
 
 
 if __name__ == "__main__":
