@@ -105,12 +105,8 @@ def main():
                 properties['bycountry'][year][country] = entry
         for entry in bywojewodztwo[wojewodztwo]:
             year = entry.pop('year')
-            # country = entry.pop('country')
-            try:
-                properties['bywojewodztwo'][year].append(entry)
-            except:
-                properties['bywojewodztwo'][year] = [entry, ]
-
+            country = entry.pop('country')
+            properties['bywojewodztwo'][year][country] = entry
 
     with open('data_export/tourists_total.json', 'w') as out_file:
         out_file.write(json.dumps(total))
