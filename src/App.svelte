@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte'
 	import Map from "./Map.svelte"
 	import Country from "./Country.svelte"
+	import Control from "./Control.svelte"
 
 	onMount(async () => {
 		const country_codes_raw = await fetch('data/country_codes.json');
@@ -25,6 +26,7 @@
 
 <main>
 	<h1>Foreign Tourists</h1>
+	<Control />
 	{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
 		<p>waiting for the promise to resolve...</p>
 	{:else}
