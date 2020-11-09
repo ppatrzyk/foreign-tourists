@@ -28,11 +28,17 @@
 	<h1>Foreign Tourists</h1>
 	<Control />
 	{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
-		<p>waiting for the promise to resolve...</p>
+		<p>Loading data...</p>
 	{:else}
-		<Map />
-		<Country country="FR" />
-		<Country country="CZ" />
+		{#if $app_state.mode !== 'total'}
+			<Map />
+		{:else}
+			<div>total data summary here</div>
+		{/if}
+		{#if $app_state.mode === 'bycountry'}
+			<Country country="FR" />
+			<Country country="CZ" />
+		{/if}
 	{/if}
 </main>
 
