@@ -67,11 +67,12 @@
 	}
 	function by_wojewodztwo_render(geojson, year) {
 		console.log(`wojewodztwo render called ${year}`)
+		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", missing_color)
 		map.selectAll("text")
 			.text(function(d) {
-				var data = d.properties['wojewodztwo'][year][country];
+				var data = d.properties['bywojewodztwo'][year];
 				// {AT: {count: 1, year_prop:0}, BE: ...}
 				// TODO: compute top 3 and return
 				return 'todo'
