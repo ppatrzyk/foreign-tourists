@@ -10,7 +10,7 @@
 	const MAP_HEIGHT = 600;
 	// https://github.com/d3/d3-scale-chromatic
 	const color_scale = scaleSequential(interpolateRdYlGn);
-	const missing_color = "#000000";
+	const missing_color = "#ffffff";
 	
 	function draw_map(geojson) {
 		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
