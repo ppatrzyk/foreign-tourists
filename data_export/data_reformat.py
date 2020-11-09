@@ -63,10 +63,18 @@ def main():
     )
     total['year_prop'] = total['count'] / total['year_total']
     retain_keys = ('country', 'year', 'count', 'year_prop')
-    total = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in total.to_dict(orient='index').items())
+    data_raw = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in total.to_dict(orient='index').items())
+    total = {}
+    for entry in data_raw:
+        year = entry.pop('year')
+        try:
+            total[year].append(entry)
+        except:
+            total[year] = [entry, ]
     
     bywojewodztwo = {}
     for wojewodztwo in WOJEWODZTWA:
+        bywojewodztwo[wojewodztwo] = {}
         woj_data = df[df.region == wojewodztwo]
         woj_data = pd.merge(
             woj_data,
@@ -76,7 +84,16 @@ def main():
         )
         woj_data['year_prop'] = woj_data['count'] / woj_data['year_total']
         retain_keys = ('country', 'year', 'count', 'year_prop')
-        bywojewodztwo[wojewodztwo] = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in woj_data.to_dict(orient='index').items())
+        data_raw = tuple({key: val for key, val in entry.items() if key in retain_keys} for index, entry in woj_data.to_dict(orient='index').items())
+        data_all = {}
+        for entry in data_raw:
+            year = entry.pop('year')
+            try:
+                data_all[year].append(entry)
+            except:
+                data_all[year] = [entry, ]
+        for year, data in data_all.items():
+            bywojewodztwo[wojewodztwo][year] = sorted(data, key=lambda el: el['year_prop'], reverse=True)
     
     bycountry = {}
     for country in COUNTRY_CODES.keys():
@@ -103,10 +120,8 @@ def main():
                 entry.pop('region')
                 year = entry.pop('year')
                 properties['bycountry'][year][country] = entry
-        for entry in bywojewodztwo[wojewodztwo]:
-            year = entry.pop('year')
-            country = entry.pop('country')
-            properties['bywojewodztwo'][year][country] = entry
+        for year, entry in bywojewodztwo[wojewodztwo].items():
+            properties['bywojewodztwo'][year] = entry
 
     with open('data_export/tourists_total.json', 'w') as out_file:
         out_file.write(json.dumps(total))
