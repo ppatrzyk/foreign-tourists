@@ -73,9 +73,8 @@
 		map.selectAll("text")
 			.text(function(d) {
 				var data = d.properties['bywojewodztwo'][year];
-				// {AT: {count: 1, year_prop:0}, BE: ...}
-				// TODO: compute top 3 and return
-				return 'todo'
+				var top3 = data.map(el => el.country).filter(el => el != 'OTHER').slice(0, 3);
+				return top3.toString();
 			})
 	}
 	$: update_trigger = update_map($map_geojson, $app_state);
