@@ -67,3 +67,7 @@ button:focus {
 	stroke: white;
 	stroke-width: 0.5;
 }
+
+.map-label {
+	fill: black;
+}

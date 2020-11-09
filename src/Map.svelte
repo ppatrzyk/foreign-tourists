@@ -27,6 +27,7 @@
 			.enter()
 			.append('text')
 			.text('')
+			.attr("class", "map-label")
 			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
 	}
 
@@ -56,7 +57,12 @@
 				}
 			})
 		map.selectAll("text")
-			.text(function(d) { return d.properties['bycountry'][year][country]['year_prop']; })
+			.text(function(d) {
+				var prop = d.properties['bycountry'][year][country]['year_prop'];
+				// Javascript rounding workaround + to percent conversion
+				var perc = Math.round( (prop*100) * 100 + Number.EPSILON ) / 100
+				return `${perc}%`
+			})
 			
 	}
 	function by_wojewodztwo_render(geojson, year) {
