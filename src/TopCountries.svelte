@@ -25,8 +25,22 @@
 </script>
 
 <div>
-    <p>top countries placeholder</p>
-    <p>{level}</p>
+    <table style="width:100%">
+        <tr>
+          <th>Place</th>
+          <th>Country</th>
+          <th>Count</th>
+          <th>Perc of all</th>
+        </tr>
+        {#each data as entry, i}
+            <tr>
+                <td>{i}</td>
+                <td>{entry.country}</td>
+                <td>{entry.count}</td>
+                <td>{entry.year_prop}</td>
+            </tr>
+        {/each}
+      </table> 
 </div>
 
 <style>
