@@ -16,8 +16,6 @@
 		const tourists_raw = await fetch('data/tourists_total.json');
 		var tourists_data = await tourists_raw.json();
 
-		console.log(map_geojson_data)
-
 		country_codes.set(country_codes_data)
 		map_geojson.set(map_geojson_data)
 		tourists.set(tourists_data)

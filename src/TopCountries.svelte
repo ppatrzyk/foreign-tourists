@@ -17,7 +17,6 @@
         } else {
             data = tourists[year]
         }
-        console.log(data)
         return data
     }
     $: data = get_data(level, $app_state, $map_geojson, $tourists)

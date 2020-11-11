@@ -11,10 +11,6 @@
 	// https://github.com/d3/d3-scale-chromatic
 	const color_scale = scaleSequential(interpolateRdYlGn);
 	const missing_color = "#ffffff";
-	
-	function set_wojewodztwo(wojewodztwo) {
-		console.log(set_wojewodztwo);
-	}
 
 	// d3 update functions
 
@@ -27,11 +23,7 @@
 			.enter()
 			.append("path")
 			.attr("d", path)
-			.attr("class", "country-border")
-			.on("click", function(d) {
-				console.log(d)
-				set_wojewodztwo(d.properties.nazwa)
-			});
+			.attr("class", "country-border");
 		map.selectAll('text')
 			.data(geojson.features)
 			.enter()
@@ -56,7 +48,6 @@
 	}
 
 	function by_country_render(geojson, country, year) {
-		console.log(`country render called ${country} ${year}`)
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", function(d) {
@@ -78,7 +69,6 @@
 	}
 
 	function by_wojewodztwo_render(geojson, year) {
-		console.log(`wojewodztwo render called ${year}`)
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", missing_color)
