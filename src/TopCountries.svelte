@@ -3,11 +3,17 @@
 
     export let level; // wojewodztwo, total
     let data;
-    var wojewodztwo = app_state['wojewodztwo'];
-    var year = app_state['year'];
+    var wojewodztwo = $app_state['wojewodztwo'];
+    var year = $app_state['year'];
+    console.log(year)
     if (level == 'wojewodztwo') {
-        data = []
-        // TODO
+        var map = $map_geojson;
+        for (var entry of map['features']) {
+            var current_name = entry.properties.nazwa.toUpperCase();
+            if (current_name === wojewodztwo) {
+                data = entry.properties['bywojewodztwo'][year]
+            }
+        }
     } else {
         data = tourists[year]
     }
