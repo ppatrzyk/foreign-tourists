@@ -4,6 +4,7 @@
 	import Map from "./Map.svelte"
 	import Country from "./Country.svelte"
 	import Control from "./Control.svelte"
+	import TopCountries from "./TopCountries.svelte"
 
 	onMount(async () => {
 		const country_codes_raw = await fetch('data/country_codes.json');
@@ -33,11 +34,14 @@
 		{#if $app_state.mode !== 'total'}
 			<Map />
 		{:else}
-			<div>total data summary here</div>
+			<TopCountries level="total"/>
 		{/if}
 		{#if $app_state.mode === 'bycountry'}
 			<Country country="FR" />
 			<Country country="CZ" />
+		{/if}
+		{#if $app_state.mode === 'bywojewodztwo'}
+			<TopCountries level="wojewodztwo"/>
 		{/if}
 	{/if}
 </main>
