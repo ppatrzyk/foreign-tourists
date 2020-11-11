@@ -34,13 +34,13 @@
         </tr>
         {#each data as entry, i}
             <tr>
-                <td>{i}</td>
+                <td>{i+1}</td>
                 <td>{entry.country}</td>
                 <td>{entry.count}</td>
-                <td>{entry.year_prop}</td>
+                <td>{Math.round( (entry.year_prop*100) * 100 + Number.EPSILON ) / 100}</td>
             </tr>
         {/each}
-      </table> 
+      </table>
 </div>
 
 <style>
