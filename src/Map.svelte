@@ -12,6 +12,12 @@
 	const color_scale = scaleSequential(interpolateRdYlGn);
 	const missing_color = "#ffffff";
 	
+	function set_wojewodztwo(wojewodztwo) {
+		console.log(set_wojewodztwo);
+	}
+
+	// d3 update functions
+
 	function draw_map(geojson) {
 		const projection = geoMercator().fitSize([MAP_WIDTH, MAP_HEIGHT], geojson);
 		const path = geoPath().projection(projection);
@@ -21,7 +27,11 @@
 			.enter()
 			.append("path")
 			.attr("d", path)
-			.attr("class", "country-border");
+			.attr("class", "country-border")
+			.on("click", function(d) {
+				console.log(d)
+				set_wojewodztwo(d.properties.nazwa)
+			});
 		map.selectAll('text')
 			.data(geojson.features)
 			.enter()
@@ -44,6 +54,7 @@
 		}
 		return true
 	}
+
 	function by_country_render(geojson, country, year) {
 		console.log(`country render called ${country} ${year}`)
 		var map = select("#map");
@@ -65,6 +76,7 @@
 			})
 			
 	}
+
 	function by_wojewodztwo_render(geojson, year) {
 		console.log(`wojewodztwo render called ${year}`)
 		var map = select("#map");
