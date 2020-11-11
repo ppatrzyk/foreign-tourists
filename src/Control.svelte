@@ -12,6 +12,26 @@
         {id: 'total', text: 'Total'}
     ]
     let selected_mode;
+
+    let wojewodztwa = [
+      {id: 'DOLNOŚLĄSKIE', text: 'Dolnośląskie'},
+      {id: 'KUJAWSKO-POMORSKIE', text: 'Kujawsko-Pomorskie'},
+      {id: 'LUBELSKIE', text: 'Lubelskie'},
+      {id: 'LUBUSKIE', text: 'Lubuskie'},
+      {id: 'ŁÓDZKIE', text: 'Łódzkie'},
+      {id: 'MAZOWIECKIE', text: 'Mazowieckie'},
+      {id: 'MAŁOPOLSKIE', text: 'Małopolskie'},
+      {id: 'OPOLSKIE', text: 'Opolskie'},
+      {id: 'PODKARPACKIE', text: 'Podkarpackie'},
+      {id: 'PODLASKIE', text: 'Podlaskie'},
+      {id: 'POMORSKIE', text: 'Pomorskie'},
+      {id: 'ŚLĄSKIE', text: 'Śląskie'},
+      {id: 'ŚWIĘTOKRZYSKIE', text: 'Świętokrzyskie'},
+      {id: 'WARMIŃSKO-MAZURSKIE', text: 'Warmińsko-Mazurskie'},
+      {id: 'WIELKOPOLSKIE', text: 'Wielkopolskie'},
+      {id: 'ZACHODNIOPOMORSKIE', text: 'Zachodniopomorskie'}
+    ]
+    let selected_wojewodztwo;
 </script>
 
 <div>
@@ -26,12 +46,23 @@
 			</option>
 		{/each}
     </select>
+
     <h3>Mode</h3>
     <!-- svelte-ignore a11y-no-onchange -->
     <select bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
 		{#each modes as mode}
 			<option value={mode}>
 				{mode.text}
+			</option>
+		{/each}
+    </select>
+
+    <h3>Wojewodztwo</h3>
+    <!-- svelte-ignore a11y-no-onchange -->
+    <select bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
+		{#each wojewodztwa as wojewodztwo}
+			<option value={wojewodztwo}>
+				{wojewodztwo.text}
 			</option>
 		{/each}
     </select>
