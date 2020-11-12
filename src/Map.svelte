@@ -33,21 +33,21 @@
 			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
 	}
 
-	function update_map(geojson, app_state) {
+	function update_map(app_state) {
 		var mode = app_state['mode'];
 		var year = app_state['year'];
 		var country = app_state['country'];
 		if (mode === 'bycountry') {
-			by_country_render(geojson, country, year)
+			by_country_render(country, year)
 		} else if (mode === 'bywojewodztwo') {
-			by_wojewodztwo_render(geojson, year)
+			by_wojewodztwo_render(year)
 		} else {
 			// pass
 		}
 		return true
 	}
 
-	function by_country_render(geojson, country, year) {
+	function by_country_render(country, year) {
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", function(d) {
@@ -68,7 +68,7 @@
 			
 	}
 
-	function by_wojewodztwo_render(geojson, year) {
+	function by_wojewodztwo_render(year) {
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", missing_color)
@@ -79,11 +79,11 @@
 				return top3.toString();
 			})
 	}
-	$: update_trigger = update_map($map_geojson, $app_state);
+	$: update_trigger = update_map($app_state);
 
 	onMount(async () => {
 		draw_map($map_geojson);
-		update_map($map_geojson, $app_state);
+		update_map($app_state);
 	});
 </script>
 
