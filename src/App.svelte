@@ -25,23 +25,30 @@
 
 <main>
 	<h1>Foreign Tourists</h1>
-	<Control />
-	{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
-		<p>Loading data...</p>
-	{:else}
-		{#if $app_state.mode !== 'total'}
-			<Map />
-		{:else}
-			<TopCountries level="total"/>
-		{/if}
-		{#if $app_state.mode === 'bycountry'}
-			<Country country="FR" />
-			<Country country="CZ" />
-		{/if}
-		{#if $app_state.mode === 'bywojewodztwo'}
-			<TopCountries level="wojewodztwo"/>
-		{/if}
-	{/if}
+	<div class="pure-g">
+		<div class="pure-u-1-5">
+			<Control />
+		</div>
+		<div class="pure-u-4-5">
+			{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
+				<p>Loading data...</p>
+			{:else}
+				{#if $app_state.mode !== 'total'}
+					<Map />
+				{:else}
+					<TopCountries level="total"/>
+				{/if}
+				{#if $app_state.mode === 'bycountry'}
+					<Country country="FR" />
+					<Country country="CZ" />
+				{/if}
+				{#if $app_state.mode === 'bywojewodztwo'}
+					<TopCountries level="wojewodztwo"/>
+				{/if}
+			{/if}
+		</div>
+	</div>
+	
 </main>
 
 <style>
