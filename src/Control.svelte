@@ -32,6 +32,9 @@
       {id: 'ZACHODNIOPOMORSKIE', text: 'Zachodniopomorskie'}
     ]
     let selected_wojewodztwo;
+
+    let years = [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
+    let selected_year;
 </script>
 
 <div>
@@ -66,6 +69,17 @@
 			</option>
 		{/each}
     </select>
+
+    <h3>Year</h3>
+    <!-- svelte-ignore a11y-no-onchange -->
+    <select bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
+		{#each years as year}
+			<option value={year}>
+				{year}
+			</option>
+		{/each}
+    </select>
+    
 </div>
 
 <style>
