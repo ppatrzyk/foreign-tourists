@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import copy from 'rollup-plugin-copy';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
@@ -45,6 +46,13 @@ export default {
 				css.write('bundle.css');
 			}
 		}),
+
+		copy({
+            targets: [{ 
+                src: 'node_modules/purecss/build/pure-min.css', 
+                dest: 'public/build' 
+            }]
+        }),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
