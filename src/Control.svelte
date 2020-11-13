@@ -35,11 +35,12 @@
 
     let years = [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
     let selected_year;
+
+    $: console.log($app_state)
 </script>
 
 <div>
     <h2>Control panel</h2>
-    <p>{JSON.stringify($app_state)}</p>
     <h3>Lang</h3>
     <!-- svelte-ignore a11y-no-onchange -->
     <select bind:value={selected_lang} on:change="{app_state.set_variable('language', selected_lang.id)}">
