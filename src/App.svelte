@@ -54,15 +54,16 @@
 				{:else}
 					<TopCountries level="total"/>
 				{/if}
-
-				{#if $app_state.mode === 'bywojewodztwo'}
-					<TopCountries level="wojewodztwo"/>
-				{/if}
 			</div>
 			<div class="pure-u-2-24">
 				{#if $app_state.mode === 'bycountry'}
 					<Country country="BY" />
 					<Country country="UA" />
+				{/if}
+			</div>
+			<div class="pure-u-6-24">
+				{#if $app_state.mode === 'bywojewodztwo'}
+					<TopCountries level="wojewodztwo"/>
 				{/if}
 			</div>
 		{/if}
