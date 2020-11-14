@@ -31,24 +31,41 @@
 		</div>
 	</div>
 	<div class="pure-g">
-		<div class="pure-u-4-5">
-			{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
-				<p>Loading data...</p>
-			{:else}
+		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
+			<div class="pure-u-1-1">
+				Loading data...
+			</div>
+		{:else}
+			<div class="pure-u-2-24">
+				{#if $app_state.mode === 'bycountry'}
+					<Country country="GB" />
+					<Country country="US" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode === 'bycountry'}
+					<Country country="FR" />
+					<Country country="IT" />
+				{/if}
+			</div>
+			<div class="pure-u-12-24">
 				{#if $app_state.mode !== 'total'}
 					<Map />
 				{:else}
 					<TopCountries level="total"/>
 				{/if}
-				{#if $app_state.mode === 'bycountry'}
-					<Country country="FR" />
-					<Country country="CZ" />
-				{/if}
+
 				{#if $app_state.mode === 'bywojewodztwo'}
 					<TopCountries level="wojewodztwo"/>
 				{/if}
-			{/if}
-		</div>
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode === 'bycountry'}
+					<Country country="BY" />
+					<Country country="UA" />
+				{/if}
+			</div>
+		{/if}
 	</div>
 	
 </main>
