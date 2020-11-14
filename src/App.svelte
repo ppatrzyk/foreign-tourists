@@ -26,9 +26,11 @@
 <main>
 	<h1>Foreign Tourists</h1>
 	<div class="pure-g">
-		<div class="pure-u-1-5">
+		<div class="pure-u-1-1">
 			<Control />
 		</div>
+	</div>
+	<div class="pure-g">
 		<div class="pure-u-4-5">
 			{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
 				<p>Loading data...</p>

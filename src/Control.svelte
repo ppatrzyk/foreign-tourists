@@ -41,9 +41,9 @@
 
 <div>
     <h2>Control panel</h2>
-    <h3>Lang</h3>
+    <label for="lang">Language</label>
     <!-- svelte-ignore a11y-no-onchange -->
-    <select bind:value={selected_lang} on:change="{app_state.set_variable('language', selected_lang.id)}">
+    <select id="lang" bind:value={selected_lang} on:change="{app_state.set_variable('language', selected_lang.id)}">
 		{#each languages as language}
 			<option value={language}>
 				{language.text}
@@ -51,9 +51,9 @@
 		{/each}
     </select>
 
-    <h3>Mode</h3>
+    <label for="mode">Mode</label>
     <!-- svelte-ignore a11y-no-onchange -->
-    <select bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
+    <select id="mode" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
 		{#each modes as mode}
 			<option value={mode}>
 				{mode.text}
@@ -61,9 +61,9 @@
 		{/each}
     </select>
 
-    <h3>Wojewodztwo</h3>
+    <label for="woj">Wojewodztwo</label>
     <!-- svelte-ignore a11y-no-onchange -->
-    <select bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
+    <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
 		{#each wojewodztwa as wojewodztwo}
 			<option value={wojewodztwo}>
 				{wojewodztwo.text}
@@ -71,9 +71,9 @@
 		{/each}
     </select>
 
-    <h3>Year</h3>
+    <label for="year">Year</label>
     <!-- svelte-ignore a11y-no-onchange -->
-    <select bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
+    <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
 		{#each years as year}
 			<option value={year}>
 				{year}
