@@ -36,19 +36,64 @@
 				Loading data...
 			</div>
 		{:else}
+			<!-- row 1 -->
 			<div class="pure-u-2-24">
-				{#if $app_state.mode === 'bycountry'}
+				{#if $app_state.mode !== 'total'}
+					<Country country="CA" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="DK" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="NO" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="SE" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="FI" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="LT" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="LV" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="EE" />
+				{/if}
+			</div>
+			<div class="pure-u-8-24">
+				<!-- margin -->
+			</div>
+			<!-- row 2 -->
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
 					<Country country="UK" />
 					<Country country="US" />
 				{/if}
 			</div>
 			<div class="pure-u-2-24">
-				{#if $app_state.mode === 'bycountry'}
+				{#if $app_state.mode !== 'total'}
 					<Country country="FR" />
 					<Country country="IT" />
 				{/if}
 			</div>
-			<div class="pure-u-12-24">
+			<div class="pure-u-10-24">
 				{#if $app_state.mode !== 'total'}
 					<Map />
 				{:else}
@@ -61,11 +106,12 @@
 					<Country country="UA" />
 				{/if}
 			</div>
-			<div class="pure-u-6-24">
+			<div class="pure-u-8-24">
 				{#if $app_state.mode === 'bywojewodztwo'}
 					<TopCountries level="wojewodztwo"/>
 				{/if}
 			</div>
+			<!-- row 3 -->
 		{/if}
 	</div>
 	
