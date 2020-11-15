@@ -114,6 +114,8 @@
 					<Country country="BY" />
 					<Country country="UA" />
 					<Country country="GR" />
+					<Country country="CY" />
+					<Country country="MT" />
 					<Country country="JP" />
 				{/if}
 			</div>

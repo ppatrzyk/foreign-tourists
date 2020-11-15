@@ -84,5 +84,7 @@
 </div>
 
 <style>
-
+  div {
+    margin: 10px;
+  }
 </style>
