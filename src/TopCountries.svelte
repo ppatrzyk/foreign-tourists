@@ -14,6 +14,8 @@
                     data = entry.properties['bywojewodztwo'][year]
                 }
             }
+            // take top 10 only
+            data = data.slice(0, 10)
         } else {
             data = tourists[year]
         }

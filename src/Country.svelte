@@ -1,10 +1,11 @@
 <script>
 	import { app_state } from './stores.js';
 	export let country;
+	let flagstate = 'inactiveflag';
 </script>
 
 <div>
-	<div on:click="{app_state.set_variable('country', country)}" class="myflag flag-icon-background flag-icon-{country.toLowerCase()}" />
+	<div on:click="{app_state.set_variable('country', country)}" class="myflag {flagstate} flag-icon-background flag-icon-{country.toLowerCase()}" />
 </div>
 
 <style>
@@ -12,5 +13,13 @@
 		width: 60px;
 		height: 45px;
 		margin: 40px;
+	}
+
+	.activeflag {
+		opacity: 1;
+	}
+
+	.inactiveflag {
+		opacity: 0.5;
 	}
 </style>
