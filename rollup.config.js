@@ -48,10 +48,16 @@ export default {
 		}),
 
 		copy({
-            targets: [{ 
-                src: 'node_modules/purecss/build/pure-min.css', 
-                dest: 'public/build' 
-            }]
+            targets: [
+				{ 
+					src: 'node_modules/purecss/build/pure-min.css', 
+					dest: 'public/build' 
+				},
+				{ 
+					src: ['node_modules/flag-icon-css/flags', 'node_modules/flag-icon-css/css'], 
+					dest: 'public/build/flag-icon-css' 
+				},
+			]
         }),
 
 		// If you have external dependencies installed from
