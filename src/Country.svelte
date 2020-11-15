@@ -4,16 +4,13 @@
 </script>
 
 <div>
-	<div class="flag-icon flag-icon-pl" style="width:100%;height:50px" />
-	<button on:click="{app_state.set_variable('country', country)}">
-		<div class="myflag flag-icon-background flag-icon-gr flag-icon-squared" />
-		{country}
-	</button>
+	<div on:click="{app_state.set_variable('country', country)}" class="myflag flag-icon-background flag-icon-{country.toLowerCase()}" />
 </div>
 
 <style>
 	.myflag {
-		width: 20px;	
-		height: 20px;	
+		width: 60px;
+		height: 45px;
+		margin: 10px;
 	}
 </style>
