@@ -18,6 +18,8 @@
 		width: 60px;
 		height: 45px;
 		margin: 40px;
+		border-radius: 5px;
+		border: 1px solid black;
 	}
 
 	.activeflag {
