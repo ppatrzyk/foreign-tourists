@@ -38,7 +38,7 @@
 		{:else}
 			<div class="pure-u-2-24">
 				{#if $app_state.mode === 'bycountry'}
-					<Country country="GB" />
+					<Country country="UK" />
 					<Country country="US" />
 				{/if}
 			</div>
