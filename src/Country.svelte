@@ -11,6 +11,6 @@
 	.myflag {
 		width: 60px;
 		height: 45px;
-		margin: 10px;
+		margin: 40px;
 	}
 </style>

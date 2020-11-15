@@ -83,13 +83,21 @@
 			<!-- row 2 -->
 			<div class="pure-u-2-24">
 				{#if $app_state.mode !== 'total'}
-					<Country country="UK" />
 					<Country country="US" />
+					<Country country="UK" />
+					<Country country="IE" />
+					<Country country="ES" />
+					<Country country="PT" />
 				{/if}
 			</div>
 			<div class="pure-u-2-24">
 				{#if $app_state.mode !== 'total'}
+					<Country country="DE" />
 					<Country country="FR" />
+					<Country country="BE" />
+					<Country country="NL" />
+					<Country country="LU" />
+					<Country country="CH" />
 					<Country country="IT" />
 				{/if}
 			</div>
@@ -101,9 +109,12 @@
 				{/if}
 			</div>
 			<div class="pure-u-2-24">
-				{#if $app_state.mode === 'bycountry'}
+				{#if $app_state.mode !== 'total'}
+					<Country country="RU" />
 					<Country country="BY" />
 					<Country country="UA" />
+					<Country country="GR" />
+					<Country country="JP" />
 				{/if}
 			</div>
 			<div class="pure-u-8-24">
@@ -112,6 +123,34 @@
 				{/if}
 			</div>
 			<!-- row 3 -->
+			<div class="pure-u-4-24">
+				<!-- margin -->
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="SI" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="AT" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="CZ" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="SK" />
+				{/if}
+			</div>
+			<div class="pure-u-2-24">
+				{#if $app_state.mode !== 'total'}
+					<Country country="HU" />
+				{/if}
+			</div>
 		{/if}
 	</div>
 	

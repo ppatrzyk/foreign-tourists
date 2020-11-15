@@ -24,7 +24,7 @@
 </script>
 
 <div>
-    <table class="pure-table pure-table-striped" style="width:100%">
+    <table class="mytable pure-table pure-table-striped">
         <thead>
             <tr>
                 <th>Place</th>
@@ -53,5 +53,10 @@
 		width: 1.33rem;
 		height: 1rem;
 		margin-right: 5px;
-	}
+    }
+    
+    .mytable {
+        width: 100%;
+        margin: 10px;
+    }
 </style>
