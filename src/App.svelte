@@ -157,5 +157,7 @@
 </main>
 
 <style>
-
+	main {
+		margin: 10px;
+	}
 </style>
