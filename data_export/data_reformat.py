@@ -71,6 +71,8 @@ def main():
             total[year].append(entry)
         except:
             total[year] = [entry, ]
+    for year, data in total.items():
+        total[year] = sorted(data, key=lambda el: el['year_prop'], reverse=True)
     
     bywojewodztwo = {}
     for wojewodztwo in WOJEWODZTWA:

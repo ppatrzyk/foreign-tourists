@@ -84,7 +84,7 @@
 			<div class="pure-u-2-24">
 				{#if $app_state.mode !== 'total'}
 					<Country country="US" />
-					<Country country="UK" />
+					<Country country="GB" />
 					<Country country="IE" />
 					<Country country="ES" />
 					<Country country="PT" />
