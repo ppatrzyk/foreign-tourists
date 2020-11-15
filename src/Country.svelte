@@ -1,7 +1,12 @@
 <script>
 	import { app_state } from './stores.js';
 	export let country;
-	let flagstate = 'inactiveflag';
+	let flagstate;
+	$: if ($app_state['mode'] !== 'bycountry' || $app_state['country'] !== country) {
+		flagstate = 'inactiveflag'
+	} else {
+		flagstate = 'activeflag'
+	}
 </script>
 
 <div>
