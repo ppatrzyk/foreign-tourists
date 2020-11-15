@@ -36,7 +36,10 @@
         {#each data as entry, i}
             <tr>
                 <td>{i+1}</td>
-                <td>{entry.country}</td>
+                <td>
+                    <span class="tableflag flag-icon-background flag-icon-{entry.country.toLowerCase()}" />
+                    {entry.country}
+                </td>
                 <td>{entry.count}</td>
                 <td>{Math.round( (entry.year_prop*100) * 100 + Number.EPSILON ) / 100}</td>
             </tr>
@@ -45,5 +48,10 @@
 </div>
 
 <style>
-
+    .tableflag {
+        display: inline-block;
+		width: 1.33rem;
+		height: 1rem;
+		margin-right: 5px;
+	}
 </style>
