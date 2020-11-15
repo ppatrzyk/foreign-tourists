@@ -24,13 +24,15 @@
 </script>
 
 <div>
-    <table style="width:100%">
-        <tr>
-          <th>Place</th>
-          <th>Country</th>
-          <th>Count</th>
-          <th>Perc of all</th>
-        </tr>
+    <table class="pure-table pure-table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Place</th>
+                <th>Country</th>
+                <th>Count</th>
+                <th>Perc of all</th>
+              </tr>
+        </thead>
         {#each data as entry, i}
             <tr>
                 <td>{i+1}</td>
