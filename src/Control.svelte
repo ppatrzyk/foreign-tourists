@@ -31,41 +31,57 @@
     let years = [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
     let selected_year = 2019;
 
+    $: mode = $app_state['mode'];
+
     $: console.log($app_state)
 </script>
 
 <div>
     <h1>Foreign Tourists</h1>
 
-    <label for="mode">Mode</label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id="mode" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
-		{#each modes as mode}
-			<option value={mode}>
-				{mode.text}
-			</option>
-		{/each}
-    </select>
+    <div>
+      <label for="mode">Mode</label>
+      <!-- svelte-ignore a11y-no-onchange -->
+      <select id="mode" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
+      {#each modes as mode}
+        <option value={mode}>
+          {mode.text}
+        </option>
+      {/each}
+      </select>
+  
+      <label for="year">Year</label>
+      <!-- svelte-ignore a11y-no-onchange -->
+      <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
+      {#each years as year}
+        <option value={year}>
+          {year}
+        </option>
+      {/each}
+      </select>
+  
+      <label for="woj">Województwo</label>
+      <!-- svelte-ignore a11y-no-onchange -->
+      <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
+      {#each wojewodztwa as wojewodztwo}
+        <option value={wojewodztwo}>
+          {wojewodztwo.text}
+        </option>
+      {/each}
+      </select>
+    </div>
 
-    <label for="year">Year</label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
-		{#each years as year}
-			<option value={year}>
-				{year}
-			</option>
-		{/each}
-    </select>
+    <div>
+      {#if mode === 'total'}
+        <p>total</p>
+      {:else if mode == 'bycountry'}
+        <p>by country</p>
+      {:else if mode == 'bywojewodztwo'}
+        <p>by wojewodztw</p>
+      {:else}
 
-    <label for="woj">Województwo</label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
-		{#each wojewodztwa as wojewodztwo}
-			<option value={wojewodztwo}>
-				{wojewodztwo.text}
-			</option>
-		{/each}
-    </select>
+      {/if}
+    </div>
     
 </div>
 
