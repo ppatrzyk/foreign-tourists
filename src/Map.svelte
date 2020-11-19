@@ -1,5 +1,5 @@
 <script>
-	import { app_state, map_geojson } from './stores.js';
+	import { app_state, map_geojson, country_codes } from './stores.js';
 	import { onMount } from 'svelte'
 	import { geoMercator, geoPath } from 'd3-geo'
 	import { select } from 'd3-selection';
@@ -36,7 +36,7 @@
 			.enter()
 			.append('circle')
 			.attr("r", 20)
-			.attr("fill", 'url(#testimage)')
+			.attr("fill", 'url(#DE)')
 			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
 	}
 
@@ -87,6 +87,8 @@
 			})
 	}
 	$: update_trigger = update_map($app_state);
+	
+	$: countries = Object.keys($country_codes)
 
 	onMount(async () => {
 		draw_map($map_geojson);
@@ -98,12 +100,12 @@
 	<div >
 		<svg id="map" width={MAP_WIDTH} height={MAP_HEIGHT}>
 			<defs>
-				<pattern id = "testimage" height = "100%" width = "100%"            
-							   patternContentUnits = "objectBoundingBox">
-				   <image xlink:href = "/build/flag-icon-css/flags/1x1/vn.svg" preserveAspectRatio = "none" 
-						  width = "1" height = "1"/>
-				</pattern>
-			  </defs>
+				{#each countries as country}
+					<pattern id="{country}" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+					<image xlink:href="/build/flag-icon-css/flags/1x1/{country.toLowerCase()}.svg" preserveAspectRatio="none" width="1" height="1"/>
+					</pattern>
+				{/each}
+			</defs>
 		</svg>
 	</div>
 </div>
