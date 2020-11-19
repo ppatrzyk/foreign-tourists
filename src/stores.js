@@ -2,8 +2,7 @@
 import { writable } from "svelte/store";
 
 const app_data = writable({
-    language: 'en',
-    mode: 'bycountry',
+    mode: 'bywojewodztwo',
     year: 2019,
     country: 'CZ',
     wojewodztwo: 'DOLNOŚLĄSKIE'

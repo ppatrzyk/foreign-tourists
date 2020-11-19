@@ -24,7 +24,6 @@
 </script>
 
 <main>
-	<h1>Foreign Tourists</h1>
 	<div class="pure-g">
 		<div class="pure-u-1-1">
 			<Control />

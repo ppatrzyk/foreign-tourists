@@ -1,10 +1,5 @@
 <script>
     import { app_state } from './stores.js';
-    let languages = [
-        {id: 'en', text: 'English'},
-        {id: 'pl', text: 'Polski'}
-    ]
-    let selected_lang;
 
     let modes = [
         {id: 'bycountry', text: 'By country'},
@@ -40,16 +35,7 @@
 </script>
 
 <div>
-    <h2>Control panel</h2>
-    <label for="lang">Language</label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id="lang" bind:value={selected_lang} on:change="{app_state.set_variable('language', selected_lang.id)}">
-		{#each languages as language}
-			<option value={language}>
-				{language.text}
-			</option>
-		{/each}
-    </select>
+    <h1>Foreign Tourists</h1>
 
     <label for="mode">Mode</label>
     <!-- svelte-ignore a11y-no-onchange -->
@@ -61,22 +47,22 @@
 		{/each}
     </select>
 
-    <label for="woj">Województwo</label>
-    <!-- svelte-ignore a11y-no-onchange -->
-    <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
-		{#each wojewodztwa as wojewodztwo}
-			<option value={wojewodztwo}>
-				{wojewodztwo.text}
-			</option>
-		{/each}
-    </select>
-
     <label for="year">Year</label>
     <!-- svelte-ignore a11y-no-onchange -->
     <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
 		{#each years as year}
 			<option value={year}>
 				{year}
+			</option>
+		{/each}
+    </select>
+
+    <label for="woj">Województwo</label>
+    <!-- svelte-ignore a11y-no-onchange -->
+    <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
+		{#each wojewodztwa as wojewodztwo}
+			<option value={wojewodztwo}>
+				{wojewodztwo.text}
 			</option>
 		{/each}
     </select>
