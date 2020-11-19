@@ -10,7 +10,7 @@
 	const MAP_HEIGHT = 600;
 	// https://github.com/d3/d3-scale-chromatic
 	const color_scale = scaleSequential(interpolateYlGn);
-	const missing_color = "#ffffff";
+	const missing_color = "#ffff99";
 
 	// d3 update functions
 
@@ -30,6 +30,13 @@
 			.append('text')
 			.text('')
 			.attr("class", "map-label")
+			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
+		map.selectAll('circle')
+			.data(geojson.features)
+			.enter()
+			.append('circle')
+			.attr("r", 20)
+			.attr("fill", 'url(#testimage)')
 			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
 	}
 
@@ -89,7 +96,15 @@
 
 <div>
 	<div >
-		<svg id="map" width={MAP_WIDTH} height={MAP_HEIGHT}></svg>
+		<svg id="map" width={MAP_WIDTH} height={MAP_HEIGHT}>
+			<defs>
+				<pattern id = "testimage" height = "100%" width = "100%"            
+							   patternContentUnits = "objectBoundingBox">
+				   <image xlink:href = "/build/flag-icon-css/flags/1x1/vn.svg" preserveAspectRatio = "none" 
+						  width = "1" height = "1"/>
+				</pattern>
+			  </defs>
+		</svg>
 	</div>
 </div>
 
