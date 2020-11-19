@@ -1,3 +1,6 @@
+html, body {
+	font-family: 'Lato', sans-serif !important;
+}
 
 .country-border {
 	stroke: black;
@@ -6,4 +9,13 @@
 
 .map-label {
 	fill: black;
+}
+
+@font-face {
+font-family: 'Lato';
+font-style: normal;
+font-weight: 400;
+src: local('Lato Regular'), local('Lato-Regular'),
+	url('/build/fonts/lato-v15-latin-ext-regular.woff2') format('woff2'),
+	url('/build/fonts/lato-v15-latin-ext-regular.woff') format('woff'); 
 }
