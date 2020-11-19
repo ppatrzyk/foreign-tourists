@@ -27,7 +27,7 @@
                     for (let [key, value] of Object.entries(entry.properties['bycountry'])) {
                         var current_year = value[country]
                         current_year['year'] = key
-                        data.push(current_year)
+                        data.unshift(current_year)
                     }
                 }
             }
@@ -47,18 +47,26 @@
     <table class="mytable pure-table pure-table-striped">
         <thead>
             <tr>
-                <th>Place</th>
-                <th>Country</th>
+                {#if level !== 'countryts'}
+                    <th>Place</th>
+                {:else}
+                    <th>Year</th>
+                {/if}
+                {#if level !== 'countryts'}
+                    <th>Country</th>
+                {/if}
                 <th>Count</th>
                 <th>Perc of all</th>
               </tr>
         </thead>
         {#each data as entry, i}
             <tr>
-                <td>{i+1}</td>
-                {#if level === 'countryts'}
-                    <td>{entry.year}</td>
+                {#if level !== 'countryts'}
+                    <td>{i+1}</td>
                 {:else}
+                    <td>{entry.year}</td>
+                {/if}
+                {#if level !== 'countryts'}
                     <td>
                         <span class="tableflag flag-icon-background flag-icon-{entry.country.toLowerCase()}" />
                         {entry.country}
