@@ -75,8 +75,8 @@
 		map.selectAll("text")
 			.text(function(d) {
 				var data = d.properties['bywojewodztwo'][year];
-				var top3 = data.map(el => el.country).filter(el => el != 'OTHER').slice(0, 3);
-				return top3.toString();
+				var top = data.map(el => el.country).filter(el => el != 'OTHER')[0];
+				return top.toString();
 			})
 	}
 	$: update_trigger = update_map($app_state);
