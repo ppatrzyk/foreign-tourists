@@ -69,7 +69,7 @@
       </select>
     </div>
 
-    <div>
+    <div class="desc">
       {#if $app_state['mode'] === 'total'}
         <p>
           The following table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
@@ -96,5 +96,11 @@
 <style>
   div {
     margin: 10px;
+  }
+  .desc {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #ffff99;
   }
 </style>
