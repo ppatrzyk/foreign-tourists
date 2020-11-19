@@ -43,7 +43,9 @@
 </script>
 
 <div>
-    <h2>{wojewodztwo}</h2>
+    {#if level !== 'total'}
+        <h2>{wojewodztwo}</h2>
+    {/if}
     <table class="mytable pure-table pure-table-striped">
         <thead>
             <tr>

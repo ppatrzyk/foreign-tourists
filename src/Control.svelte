@@ -2,8 +2,8 @@
     import { app_state } from './stores.js';
 
     let modes = [
-        {id: 'bycountry', text: 'By country'},
         {id: 'bywojewodztwo', text: 'By województwo'},
+        {id: 'bycountry', text: 'By country'},
         {id: 'total', text: 'Total'}
     ]
     let selected_mode;
@@ -30,8 +30,6 @@
 
     let years = [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
     let selected_year = 2019;
-
-    $: mode = $app_state['mode'];
 
     $: console.log($app_state)
 </script>
@@ -72,14 +70,24 @@
     </div>
 
     <div>
-      {#if mode === 'total'}
-        <p>total</p>
-      {:else if mode == 'bycountry'}
-        <p>by country</p>
-      {:else if mode == 'bywojewodztwo'}
-        <p>by wojewodztw</p>
-      {:else}
-
+      {#if $app_state['mode'] === 'total'}
+        <p>
+          The following table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
+        </p>
+      {:else if $app_state['mode'] == 'bycountry'}
+        <p>
+          The visualization shows destinations of tourists from <strong>{$app_state['country']}</strong> in year <strong>{$app_state['year']}</strong>.
+          Click on a flag to change the country.
+          Table displays exact number of tourists from <strong>{$app_state['country']}</strong> by year.
+          Percentage indicates the popularity of this destination (voivodeship), relative to the entrire traffic to Poland from <strong>{$app_state['country']}</strong>.
+        </p>
+      {:else if $app_state['mode'] == 'bywojewodztwo'}
+        <p>
+          The visualization shows the ranking of countries within each voivodeship in year <strong>{$app_state['year']}</strong>.
+          Flags on the map indicate the top country from which tourists come.
+          The full ranking is currently displayed for <strong>{$app_state['wojewodztwo']}</strong> voivodeship (highlighted on the map).
+          Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
+        </p>
       {/if}
     </div>
     
