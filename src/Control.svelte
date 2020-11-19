@@ -94,7 +94,7 @@
           Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
         </p>
       {/if}
-      <p>Data source: <a href="https://api.stat.gov.pl/Home/BdlApi">Główny Urząd Statystyczny</a></p>.
+      <p>Data source: <a href="https://api.stat.gov.pl/Home/BdlApi">Główny Urząd Statystyczny</a>.</p>
     </div>
     
 </div>
