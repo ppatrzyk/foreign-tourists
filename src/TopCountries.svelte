@@ -31,7 +31,6 @@
                     }
                 }
             }
-            console.log(data)
         } else {
             data = {};
         }
