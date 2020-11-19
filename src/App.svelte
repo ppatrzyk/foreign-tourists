@@ -124,7 +124,7 @@
 					<TopCountries level="wojewodztwo"/>
 				{/if}
 				{#if $app_state.mode === 'bycountry'}
-					<p>todo count by year time series total and chosen wojewodztwo</p>
+					<TopCountries level="countryts"/>
 				{/if}
 			</div>
 			<!-- row 3 -->
