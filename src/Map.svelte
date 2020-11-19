@@ -36,7 +36,7 @@
 			.enter()
 			.append('circle')
 			.attr("r", 20)
-			.attr("fill", 'url(#DE)')
+			.attr("opacity", '0%')
 			.attr('transform', function(d) { return 'translate(' + path.centroid(d) + ')'; });
 	}
 
@@ -72,18 +72,21 @@
 				var perc = Math.round( (prop*100) * 100 + Number.EPSILON ) / 100
 				return `${perc}%`
 			})
-			
+		map.selectAll("circle")
+			.attr("opacity", '0%');
 	}
 
 	function by_wojewodztwo_render(year) {
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", missing_color)
-		map.selectAll("text")
-			.text(function(d) {
+		map.selectAll("text").text('')
+		map.selectAll("circle")
+			.attr("opacity", '100%')
+			.attr('fill', function(d) {
 				var data = d.properties['bywojewodztwo'][year];
 				var top = data.map(el => el.country).filter(el => el != 'OTHER')[0];
-				return top.toString();
+				return `url(#${top.toString()})`;
 			})
 	}
 	$: update_trigger = update_map($app_state);
