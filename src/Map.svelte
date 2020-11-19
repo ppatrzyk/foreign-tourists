@@ -11,6 +11,7 @@
 	// https://github.com/d3/d3-scale-chromatic
 	const color_scale = scaleSequential(interpolateYlGn);
 	const missing_color = "#ffff99";
+	const picked_woj_color = '#ffcc66'
 
 	// d3 update functions
 
@@ -44,10 +45,11 @@
 		var mode = app_state['mode'];
 		var year = app_state['year'];
 		var country = app_state['country'];
+		var wojewodztwo = app_state['wojewodztwo'];
 		if (mode === 'bycountry') {
 			by_country_render(country, year)
 		} else if (mode === 'bywojewodztwo') {
-			by_wojewodztwo_render(year)
+			by_wojewodztwo_render(year, wojewodztwo)
 		} else {
 			// pass
 		}
@@ -76,10 +78,17 @@
 			.attr("opacity", '0%');
 	}
 
-	function by_wojewodztwo_render(year) {
+	function by_wojewodztwo_render(year, wojewodztwo) {
 		var map = select("#map");
 		map.selectAll("path")
-			.style("fill", missing_color)
+			.style("fill", function(d) {
+					var nazwa = d.properties['nazwa'].toUpperCase();
+					if (nazwa == wojewodztwo) {
+						return picked_woj_color;
+					} else {
+						return missing_color;
+					}
+				})
 		map.selectAll("text").text('')
 		map.selectAll("circle")
 			.attr("opacity", '100%')
