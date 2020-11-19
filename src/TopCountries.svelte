@@ -1,5 +1,5 @@
 <script>
-    import { app_state, map_geojson, tourists } from './stores.js';
+    import { app_state, map_geojson, tourists, country_codes } from './stores.js';
 
     export let level; // wojewodztwo, total, countryts
     
@@ -71,7 +71,7 @@
                 {#if level !== 'countryts'}
                     <td>
                         <span class="tableflag flag-icon-background flag-icon-{entry.country.toLowerCase()}" />
-                        {entry.country}
+                        {$country_codes[entry.country]['en']}
                     </td>
                 {/if}
                 <td>{entry.count}</td>

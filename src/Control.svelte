@@ -1,5 +1,5 @@
 <script>
-    import { app_state } from './stores.js';
+    import { app_state, country_codes } from './stores.js';
 
     let modes = [
         {id: 'bywojewodztwo', text: 'By województwo'},
@@ -30,6 +30,13 @@
 
     let years = [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
     let selected_year = 2019;
+
+    let country_display
+    $: try {
+      country_display = $country_codes[$app_state['country']]['en']
+    } catch (error) {
+      country_display = 'unknown'
+    }
 
     $: console.log($app_state)
 </script>
@@ -76,10 +83,10 @@
         </p>
       {:else if $app_state['mode'] == 'bycountry'}
         <p>
-          The visualization shows destinations of tourists from <strong>{$app_state['country']}</strong> in year <strong>{$app_state['year']}</strong>.
+          The visualization shows destinations of tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
           Click on a flag to change the country.
-          Table displays exact number of tourists from <strong>{$app_state['country']}</strong> by year.
-          Percentage indicates the popularity of this destination (voivodeship), relative to the entrire traffic to Poland from <strong>{$app_state['country']}</strong>.
+          Table displays exact number of tourists from <strong>{country_display}</strong> by year.
+          Percentage indicates the popularity of this destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
         </p>
       {:else if $app_state['mode'] == 'bywojewodztwo'}
         <p>
