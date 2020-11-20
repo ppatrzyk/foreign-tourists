@@ -63,7 +63,7 @@
       {/each}
       </select>
   
-      <label for="woj">Województwo</label>
+      <label for="woj">Voivodeship</label>
       <!-- svelte-ignore a11y-no-onchange -->
       <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
       {#each wojewodztwa as wojewodztwo}
@@ -82,18 +82,21 @@
       {:else if $app_state['mode'] == 'bycountry'}
         <p>
           The visualization shows destinations of tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
-          Click on a flag to change the country.
+          Percentage indicates the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
           Table displays exact number of tourists from <strong>{country_display}</strong> by year.
-          Percentage indicates the popularity of this destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
+          Click on a flag to change the country.
         </p>
       {:else if $app_state['mode'] == 'bywojewodztwo'}
         <p>
           The visualization shows the ranking of countries within each voivodeship in year <strong>{$app_state['year']}</strong>.
-          Flags on the map indicate the top country from which tourists come.
+          Flags on the map indicate the top country of origin for each voivodeship.
           The full ranking is currently displayed for <strong>{$app_state['wojewodztwo']}</strong> voivodeship (highlighted on the map).
           Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
         </p>
       {/if}
+      <p>
+        <em>Note:</em> this app requires a bigger screen to render all elements properly.
+      </p>
       <p>Data source: <a href="https://api.stat.gov.pl/Home/BdlApi">Główny Urząd Statystyczny</a>.</p>
     </div>
     
@@ -108,5 +111,9 @@
     border-radius: 20px;
     padding: 10px;
     background-color:#e6ffe6;
+  }
+  a {
+    color: black;
+    font-weight: 600;
   }
 </style>
