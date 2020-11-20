@@ -114,7 +114,7 @@
 			<defs>
 				{#each countries as country}
 					<pattern id="{country}" height="100%" width="100%" patternContentUnits="objectBoundingBox">
-					<image xlink:href="/build/flag-icon-css/flags/1x1/{country.toLowerCase()}.svg" preserveAspectRatio="none" width="1" height="1"/>
+					<image xlink:href="build/flag-icon-css/flags/1x1/{country.toLowerCase()}.svg" preserveAspectRatio="none" width="1" height="1"/>
 					</pattern>
 				{/each}
 			</defs>
