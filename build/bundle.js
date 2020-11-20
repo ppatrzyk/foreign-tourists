@@ -4423,7 +4423,7 @@ var app = (function () {
     		c: function create() {
     			pattern = svg_element("pattern");
     			image = svg_element("image");
-    			xlink_attr(image, "xlink:href", image_xlink_href_value = "/build/flag-icon-css/flags/1x1/" + /*country*/ ctx[10].toLowerCase() + ".svg");
+    			xlink_attr(image, "xlink:href", image_xlink_href_value = "build/flag-icon-css/flags/1x1/" + /*country*/ ctx[10].toLowerCase() + ".svg");
     			attr_dev(image, "preserveAspectRatio", "none");
     			attr_dev(image, "width", "1");
     			attr_dev(image, "height", "1");
@@ -4439,7 +4439,7 @@ var app = (function () {
     			append_dev(pattern, image);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*countries*/ 1 && image_xlink_href_value !== (image_xlink_href_value = "/build/flag-icon-css/flags/1x1/" + /*country*/ ctx[10].toLowerCase() + ".svg")) {
+    			if (dirty & /*countries*/ 1 && image_xlink_href_value !== (image_xlink_href_value = "build/flag-icon-css/flags/1x1/" + /*country*/ ctx[10].toLowerCase() + ".svg")) {
     				xlink_attr(image, "xlink:href", image_xlink_href_value);
     			}
 
