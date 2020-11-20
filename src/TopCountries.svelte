@@ -45,7 +45,7 @@
     {#if level !== 'total'}
         <h2>{wojewodztwo}</h2>
     {/if}
-    <table class="mytable pure-table pure-table-striped">
+    <table class="mytable pure-table">
         <thead>
             <tr>
                 {#if level !== 'countryts'}

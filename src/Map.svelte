@@ -4,14 +4,14 @@
 	import { geoMercator, geoPath } from 'd3-geo'
 	import { select } from 'd3-selection';
 	import { scaleSequential } from 'd3-scale';
-	import { interpolateYlGn } from 'd3-scale-chromatic';
+	import { interpolateHsl } from 'd3-interpolate';
 
 	const MAP_WIDTH = 600;
 	const MAP_HEIGHT = 600;
 	// https://github.com/d3/d3-scale-chromatic
-	const color_scale = scaleSequential(interpolateYlGn);
-	const missing_color = "#ffff99";
-	const picked_woj_color = '#ffcc66'
+	const color_scale = scaleSequential(interpolateHsl("#d6f5d6", "#051505"));
+	const missing_color = "#e6ffe6";
+	const picked_woj_color = '#66ff66'
 
 	// d3 update functions
 
