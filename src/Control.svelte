@@ -79,6 +79,21 @@
     </div>
 
     <div class="desc">
+      <div>
+        Options:
+        <ul>
+          <li>
+            Mode:
+            <ul>
+              <li>By voivodeship: shows distribution of foreign tourists within given region.</li>
+              <li>By country: shows distribution of destinations within given country of origin.</li>
+              <li>Total: shows total number of tourists by country of origin in the entire Poland.</li>
+            </ul>
+          </li>
+          <li>Year</li>
+          <li>Voivodeship (<em>województwo</em>): administrative region.</li>
+        </ul>
+      </div>
       {#if $app_state['mode'] === 'total'}
         <p>
           The following table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
