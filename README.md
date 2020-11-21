@@ -5,5 +5,5 @@ A small app for exploring data about foreign tourists in Poland, built with Svel
 See it live [here](https://ppatrzyk.github.io/foreign-tourists).
 
 Data sources: 
-- [Główny Urząd Statystyczny](https://api.stat.gov.pl/Home/BdlApi)
+- [Główny Urząd Statystyczny](https://bdl.stat.gov.pl/BDL/start)
 - [ppatrzyk/polska-geojson](https://github.com/ppatrzyk/polska-geojson)

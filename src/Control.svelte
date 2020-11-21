@@ -40,7 +40,7 @@
 </script>
 
 <div>
-    <h1>Foreign Tourists</h1>
+    <h1>Foreign Tourists in Poland</h1>
 
     <div>
       <label for="mode">Mode</label>
@@ -99,9 +99,11 @@
         </p>
       {/if}
       <p>
-        <em>Note:</em> this app requires a bigger screen to render all elements properly.
+        View source code of this app on <a href="https://github.com/ppatrzyk/foreign-tourists">Github</a>.
       </p>
-      <p>Data source: <a href="https://api.stat.gov.pl/Home/BdlApi">Główny Urząd Statystyczny</a>.</p>
+      <p>
+        Data source: <a href="https://bdl.stat.gov.pl/BDL/start">Główny Urząd Statystyczny</a>.
+      </p>
     </div>
     
 </div>
