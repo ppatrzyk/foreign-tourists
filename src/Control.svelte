@@ -2,7 +2,7 @@
     import { app_state, country_codes } from './stores.js';
 
     let modes = [
-        {id: 'bywojewodztwo', text: 'By województwo'},
+        {id: 'bywojewodztwo', text: 'By voivodeship'},
         {id: 'bycountry', text: 'By country'},
         {id: 'total', text: 'Total'}
     ]
@@ -52,7 +52,9 @@
         </option>
       {/each}
       </select>
-  
+    </div>
+
+    <div>
       <label for="year">Year</label>
       <!-- svelte-ignore a11y-no-onchange -->
       <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
@@ -62,7 +64,9 @@
         </option>
       {/each}
       </select>
-  
+    </div>
+
+    <div>
       <label for="woj">Voivodeship</label>
       <!-- svelte-ignore a11y-no-onchange -->
       <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
