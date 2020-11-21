@@ -15,8 +15,8 @@
                     data = entry.properties['bywojewodztwo'][year]
                 }
             }
-            // take top 10 only
-            data = data.slice(0, 10)
+            // take top 15
+            data = data.slice(0, 15)
         } else if (level == 'total') {
             data = tourists[year]
         } else if (level == 'countryts') {

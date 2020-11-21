@@ -37,9 +37,7 @@
 		{:else}
 			<!-- row 1 -->
 			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="CA" />
-				{/if}
+				<!-- margin -->
 			</div>
 			<div class="pure-u-2-24">
 				{#if $app_state.mode !== 'total'}
@@ -82,6 +80,7 @@
 			<!-- row 2 -->
 			<div class="pure-u-2-24">
 				{#if $app_state.mode !== 'total'}
+					<Country country="CA" />
 					<Country country="US" />
 					<Country country="GB" />
 					<Country country="IE" />
