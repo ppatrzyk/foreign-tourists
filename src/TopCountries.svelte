@@ -25,9 +25,13 @@
                 if (current_name === wojewodztwo) {
                     data = []
                     for (let [key, value] of Object.entries(entry.properties['bycountry'])) {
-                        var current_year = value[country]
-                        current_year['year'] = key
-                        data.unshift(current_year)
+                        try {
+                            var current_year = value[country]
+                            current_year['year'] = key
+                            data.unshift(current_year)
+                        } catch (error) {
+                            // pass
+                        }
                     }
                 }
             }

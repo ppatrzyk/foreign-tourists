@@ -60,7 +60,12 @@
 		var map = select("#map");
 		map.selectAll("path")
 			.style("fill", function(d) {
-				var value = d.properties['bycountry'][year][country]['year_prop'];
+				var value;
+				try {
+					value = d.properties['bycountry'][year][country]['year_prop'];
+				} catch (error) {
+					// pass
+				}
 				if (value) {
 					return color_scale(value);
 				} else {
@@ -69,10 +74,17 @@
 			})
 		map.selectAll("text")
 			.text(function(d) {
-				var prop = d.properties['bycountry'][year][country]['year_prop'];
-				// Javascript rounding workaround + to percent conversion
-				var perc = Math.round( (prop*100) * 100 + Number.EPSILON ) / 100
-				return `${perc}%`
+				var perc;
+				try {
+					var prop = d.properties['bycountry'][year][country]['year_prop'];
+					// Javascript rounding workaround + to percent conversion
+					perc = Math.round( (prop*100) * 100 + Number.EPSILON ) / 100
+					perc = `${perc}%`
+				} catch (error) {
+					console.log(error)
+					perc = 'NA'
+				}
+				return perc
 			})
 		map.selectAll("circle")
 			.attr("opacity", '0%');
