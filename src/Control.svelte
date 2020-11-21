@@ -119,6 +119,9 @@
       <p>
         Data source: <a href="https://bdl.stat.gov.pl/BDL/start">Główny Urząd Statystyczny</a>.
       </p>
+      <p>
+        Note: This data is based on number of nights spent in hotels by foreign citizens. For details, see <a href="https://bdl.stat.gov.pl/BDL/start">documentation</a> (Category K18, Group G240, Subgroup P2759).
+      </p>
     </div>
     
 </div>
