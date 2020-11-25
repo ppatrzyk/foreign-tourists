@@ -45,7 +45,7 @@
     
 </script>
 
-<div>
+<div class="mytable">
     {#if level !== 'total'}
         <h2>{wojewodztwo}</h2>
     {/if}
@@ -95,7 +95,7 @@
     }
     
     .mytable {
-        width: 100%;
-        padding: 10px;
+        margin-left: 25px;
+        margin-right: 25px;
     }
 </style>
