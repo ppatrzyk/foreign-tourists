@@ -135,5 +135,7 @@
 </div>
 
 <style>
-
+	#map {
+		margin: 20px;
+	}
 </style>

@@ -38,6 +38,9 @@
 				<!-- MAIN MAP CODE -->
 				<!-- row 1 -->
 				<div class="row">
+					<div class="col-2">
+						<!-- margin -->
+					</div>
 					<div class="col-1">
 						{#if $app_state.mode !== 'total'}
 							<Country country="DK" />
@@ -78,6 +81,7 @@
 					<!-- row 2 -->
 					<div class="col-1">
 						{#if $app_state.mode !== 'total'}
+							<br><br><br><br>
 							<Country country="CA" />
 							<Country country="US" />
 							<Country country="GB" />
@@ -88,6 +92,7 @@
 					</div>
 					<div class="col-1">
 						{#if $app_state.mode !== 'total'}
+							<br><br><br><br>
 							<Country country="DE" />
 							<Country country="FR" />
 							<Country country="BE" />
@@ -97,15 +102,16 @@
 							<Country country="IT" />
 						{/if}
 					</div>
-					<div class="col-9">
+					<div class="col-8">
 						{#if $app_state.mode !== 'total'}
 							<Map />
 						{:else}
 							<TopCountries level="total"/>
 						{/if}
 					</div>
-					<div class="col-1">
+					<div class="col-2">
 						{#if $app_state.mode !== 'total'}
+							<br><br><br><br>
 							<Country country="RU" />
 							<Country country="BY" />
 							<Country country="UA" />
@@ -118,6 +124,9 @@
 				</div>
 				<!-- row 3 -->
 				<div class="row">
+					<div class="col-3">
+						<!-- margin -->
+					</div>
 					<div class="col-1">
 						{#if $app_state.mode !== 'total'}
 							<Country country="SI" />
