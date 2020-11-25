@@ -50,8 +50,8 @@ export default {
 		copy({
             targets: [
 				{ 
-					src: 'node_modules/purecss/build/pure-min.css', 
-					dest: 'public/build' 
+					src: 'node_modules/bootstrap/dist/**/*',
+					dest: 'public/build/bootstrap'
 				},
 				{ 
 					src: ['node_modules/flag-icon-css/flags', 'node_modules/flag-icon-css/css'], 
