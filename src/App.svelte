@@ -35,7 +35,115 @@
 			</div>
 		{:else}
 			<div class="col-6">
-				main map
+				<!-- MAIN MAP CODE -->
+				<!-- row 1 -->
+				<div class="row">
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="DK" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="NO" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="SE" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="FI" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="LT" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="LV" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="EE" />
+						{/if}
+					</div>
+				</div>
+				<div class="row">
+					<!-- row 2 -->
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="CA" />
+							<Country country="US" />
+							<Country country="GB" />
+							<Country country="IE" />
+							<Country country="ES" />
+							<Country country="PT" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="DE" />
+							<Country country="FR" />
+							<Country country="BE" />
+							<Country country="NL" />
+							<Country country="LU" />
+							<Country country="CH" />
+							<Country country="IT" />
+						{/if}
+					</div>
+					<div class="col-9">
+						{#if $app_state.mode !== 'total'}
+							<Map />
+						{:else}
+							<TopCountries level="total"/>
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="RU" />
+							<Country country="BY" />
+							<Country country="UA" />
+							<Country country="GR" />
+							<Country country="CY" />
+							<Country country="MT" />
+							<Country country="JP" />
+						{/if}
+					</div>
+				</div>
+				<!-- row 3 -->
+				<div class="row">
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="SI" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="AT" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="CZ" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="SK" />
+						{/if}
+					</div>
+					<div class="col-1">
+						{#if $app_state.mode !== 'total'}
+							<Country country="HU" />
+						{/if}
+					</div>
+				</div>
 			</div>
 			<div class="col">
 				{#if $app_state.mode === 'bywojewodztwo'}
@@ -47,129 +155,6 @@
 			</div>
 		{/if}
 	</div>
-	<div class="pure-g">
-		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
-			<div class="pure-u-1-1">
-				Loading data...
-			</div>
-		{:else}
-			<!-- row 1 -->
-			<div class="pure-u-2-24">
-				<!-- margin -->
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="DK" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="NO" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="SE" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="FI" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="LT" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="LV" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="EE" />
-				{/if}
-			</div>
-			<div class="pure-u-8-24">
-				<!-- margin -->
-			</div>
-			<!-- row 2 -->
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="CA" />
-					<Country country="US" />
-					<Country country="GB" />
-					<Country country="IE" />
-					<Country country="ES" />
-					<Country country="PT" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="DE" />
-					<Country country="FR" />
-					<Country country="BE" />
-					<Country country="NL" />
-					<Country country="LU" />
-					<Country country="CH" />
-					<Country country="IT" />
-				{/if}
-			</div>
-			<div class="pure-u-10-24">
-				{#if $app_state.mode !== 'total'}
-					<Map />
-				{:else}
-					<TopCountries level="total"/>
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="RU" />
-					<Country country="BY" />
-					<Country country="UA" />
-					<Country country="GR" />
-					<Country country="CY" />
-					<Country country="MT" />
-					<Country country="JP" />
-				{/if}
-			</div>
-			<div class="pure-u-8-24">
-				
-			</div>
-			<!-- row 3 -->
-			<div class="pure-u-4-24">
-				<!-- margin -->
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="SI" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="AT" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="CZ" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="SK" />
-				{/if}
-			</div>
-			<div class="pure-u-2-24">
-				{#if $app_state.mode !== 'total'}
-					<Country country="HU" />
-				{/if}
-			</div>
-		{/if}
-	</div>
-	
 </main>
 
 <style>
