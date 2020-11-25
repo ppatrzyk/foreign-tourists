@@ -49,7 +49,7 @@
     {#if level !== 'total'}
         <h2>{wojewodztwo}</h2>
     {/if}
-    <table class="mytable pure-table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 {#if level !== 'countryts'}
@@ -64,24 +64,26 @@
                 <th>Perc of all</th>
               </tr>
         </thead>
-        {#each data as entry, i}
-            <tr>
-                {#if level !== 'countryts'}
-                    <td>{i+1}</td>
-                {:else}
-                    <td>{entry.year}</td>
-                {/if}
-                {#if level !== 'countryts'}
-                    <td>
-                        <span class="tableflag flag-icon-background flag-icon-{entry.country.toLowerCase()}" />
-                        {$country_codes[entry.country]['en']}
-                    </td>
-                {/if}
-                <td>{entry.count}</td>
-                <td>{Math.round( (entry.year_prop*100) * 100 + Number.EPSILON ) / 100}</td>
-            </tr>
-        {/each}
-      </table>
+        <tbody>
+            {#each data as entry, i}
+                <tr>
+                    {#if level !== 'countryts'}
+                        <td>{i+1}</td>
+                    {:else}
+                        <td>{entry.year}</td>
+                    {/if}
+                    {#if level !== 'countryts'}
+                        <td>
+                            <span class="tableflag flag-icon-background flag-icon-{entry.country.toLowerCase()}" />
+                            {$country_codes[entry.country]['en']}
+                        </td>
+                    {/if}
+                    <td>{entry.count}</td>
+                    <td>{Math.round( (entry.year_prop*100) * 100 + Number.EPSILON ) / 100}</td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
 </div>
 
 <style>
