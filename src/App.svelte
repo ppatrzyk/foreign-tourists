@@ -24,10 +24,27 @@
 </script>
 
 <main>
-	<div class="pure-g">
-		<div class="pure-u-1-1">
-			<Control />
-		</div>
+	<div class="row">
+		<div class="col"><Control /></div>
+		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
+			<div class="col-9">
+				loading data...
+			</div>
+		{:else}
+			<div class="col-6">
+				main map
+			</div>
+			<div class="col">
+				{#if $app_state.mode === 'bywojewodztwo'}
+					<TopCountries level="wojewodztwo"/>
+				{/if}
+				{#if $app_state.mode === 'bycountry'}
+					<TopCountries level="countryts"/>
+				{/if}
+			</div>
+		{/if}
+
+		
 	</div>
 	<div class="pure-g">
 		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
@@ -118,12 +135,7 @@
 				{/if}
 			</div>
 			<div class="pure-u-8-24">
-				{#if $app_state.mode === 'bywojewodztwo'}
-					<TopCountries level="wojewodztwo"/>
-				{/if}
-				{#if $app_state.mode === 'bycountry'}
-					<TopCountries level="countryts"/>
-				{/if}
+				
 			</div>
 			<!-- row 3 -->
 			<div class="pure-u-4-24">
