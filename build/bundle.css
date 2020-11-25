@@ -1,6 +1,7 @@
-main.svelte-1cmphro{margin:10px}
-div.svelte-1ozye09{margin:10px}.desc.svelte-1ozye09{border:1px solid black;border-radius:20px;padding:10px;background-color:#e6ffe6}a.svelte-1ozye09{color:black;font-weight:600}
-.myflag.svelte-1krg4lm{width:60px;height:45px;margin:40px;border-radius:5px;border:1px solid black}.activeflag.svelte-1krg4lm{opacity:1}.inactiveflag.svelte-1krg4lm{opacity:0.5}
-.tableflag.svelte-1f99ybv{display:inline-block;width:1.33rem;height:1rem;margin-right:5px}.mytable.svelte-1f99ybv{width:100%;padding:10px}
+main.svelte-1cuv0uw{margin:10px}.title.svelte-1cuv0uw{margin:10px}
+.mycard.svelte-yk2xzk{padding:15px !important;margin:15px}a.svelte-yk2xzk{color:black;font-weight:600}
+.myflag.svelte-113v5af{width:60px;height:45px;margin-bottom:20px;margin-left:20px;border-radius:5px;border:1px solid black}.activeflag.svelte-113v5af{opacity:1}.inactiveflag.svelte-113v5af{opacity:0.5}
+#map.svelte-7ol3nd{margin:20px}
+.tableflag.svelte-1659148{display:inline-block;width:1.33rem;height:1rem;margin-right:5px}.mytable.svelte-1659148{margin-left:25px;margin-right:25px}
 
 /*# sourceMappingURL=bundle.css.map */
