@@ -25,6 +25,9 @@
 
 <main>
 	<div class="row">
+		<h1 class="title">Foreign Tourists in Poland</h1>
+	</div>
+	<div class="row">
 		<div class="col"><Control /></div>
 		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
 			<div class="col-9">
@@ -43,8 +46,6 @@
 				{/if}
 			</div>
 		{/if}
-
-		
 	</div>
 	<div class="pure-g">
 		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
@@ -173,6 +174,10 @@
 
 <style>
 	main {
+		margin: 10px;
+	}
+
+	.title {
 		margin: 10px;
 	}
 </style>

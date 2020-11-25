@@ -40,8 +40,6 @@
 </script>
 
 <div>
-    <h1>Foreign Tourists in Poland</h1>
-
     <div>
       <label for="mode">Mode</label>
       <!-- svelte-ignore a11y-no-onchange -->
