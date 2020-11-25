@@ -85,37 +85,21 @@
             {/each}
             </select>
           </div>
-      
-          <div>
-            Options:
-            <ul>
-              <li>
-                Mode:
-                <ul>
-                  <li>By voivodeship: shows distribution of foreign tourists within given region.</li>
-                  <li>By country: shows distribution of destinations within given country of origin.</li>
-                  <li>Total: shows total number of tourists by country of origin in the entire Poland.</li>
-                </ul>
-              </li>
-              <li>Year</li>
-              <li>Voivodeship (<em>województwo</em>): administrative region.</li>
-            </ul>
-          </div>
           {#if $app_state['mode'] === 'total'}
             <p>
-              The following table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
+              The table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
             </p>
           {:else if $app_state['mode'] == 'bycountry'}
             <p>
-              The visualization shows destinations of tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
+              The visualization shows distribution of destinations within tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
               Percentage indicates the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
               Table displays exact number of tourists from <strong>{country_display}</strong> by year.
-              Click on a flag to change the country.
+              <strong>Click on a flag to change the country.</strong>
             </p>
           {:else if $app_state['mode'] == 'bywojewodztwo'}
             <p>
               The visualization shows the ranking of countries within each voivodeship in year <strong>{$app_state['year']}</strong>.
-              Flags on the map indicate the top country of origin for each voivodeship.
+              Flags on the map indicate where do most tourists come from.
               The full ranking is currently displayed for <strong>{$app_state['wojewodztwo']}</strong> voivodeship (highlighted on the map).
               Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
             </p>
