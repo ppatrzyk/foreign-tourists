@@ -17,7 +17,8 @@
 	.myflag {
 		width: 60px;
 		height: 45px;
-		margin: 40px;
+		margin-bottom: 20px;
+		margin-left: 20px;
 		border-radius: 5px;
 		border: 1px solid black;
 	}
