@@ -44,10 +44,12 @@
       <div class="card-body">
         <h3 class="card-title">Visualization</h3>
         <div class="card-text">
-          <div>
-            <label for="mode">Mode</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="mode">Mode</label>
+            </div>
             <!-- svelte-ignore a11y-no-onchange -->
-            <select id="mode" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
+            <select id="mode" class="custom-select" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
             {#each modes as mode}
               <option value={mode}>
                 {mode.text}
@@ -56,10 +58,12 @@
             </select>
           </div>
       
-          <div>
-            <label for="year">Year</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="year">Year</label>
+            </div>
             <!-- svelte-ignore a11y-no-onchange -->
-            <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
+            <select id="year" class="custom-select" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
             {#each years as year}
               <option value={year}>
                 {year}
@@ -68,10 +72,12 @@
             </select>
           </div>
       
-          <div>
-            <label for="woj">Voivodeship</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="woj">Voivodeship</label>
+            </div>
             <!-- svelte-ignore a11y-no-onchange -->
-            <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
+            <select id="woj" class="custom-select" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
             {#each wojewodztwa as wojewodztwo}
               <option value={wojewodztwo}>
                 {wojewodztwo.text}
