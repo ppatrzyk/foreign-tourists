@@ -40,100 +40,100 @@
 </script>
 
 <div>
-    <div>
-      <label for="mode">Mode</label>
-      <!-- svelte-ignore a11y-no-onchange -->
-      <select id="mode" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
-      {#each modes as mode}
-        <option value={mode}>
-          {mode.text}
-        </option>
-      {/each}
-      </select>
-    </div>
-
-    <div>
-      <label for="year">Year</label>
-      <!-- svelte-ignore a11y-no-onchange -->
-      <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
-      {#each years as year}
-        <option value={year}>
-          {year}
-        </option>
-      {/each}
-      </select>
-    </div>
-
-    <div>
-      <label for="woj">Voivodeship</label>
-      <!-- svelte-ignore a11y-no-onchange -->
-      <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
-      {#each wojewodztwa as wojewodztwo}
-        <option value={wojewodztwo}>
-          {wojewodztwo.text}
-        </option>
-      {/each}
-      </select>
-    </div>
-
-    <div class="desc">
-      <div>
-        Options:
-        <ul>
-          <li>
-            Mode:
+    <div class="card mycard">
+      <div class="card-body">
+        <h3 class="card-title">Visualization</h3>
+        <div class="card-text">
+          <div>
+            <label for="mode">Mode</label>
+            <!-- svelte-ignore a11y-no-onchange -->
+            <select id="mode" bind:value={selected_mode} on:change="{app_state.set_variable('mode', selected_mode.id)}">
+            {#each modes as mode}
+              <option value={mode}>
+                {mode.text}
+              </option>
+            {/each}
+            </select>
+          </div>
+      
+          <div>
+            <label for="year">Year</label>
+            <!-- svelte-ignore a11y-no-onchange -->
+            <select id="year" bind:value={selected_year} on:change="{app_state.set_variable('year', selected_year)}">
+            {#each years as year}
+              <option value={year}>
+                {year}
+              </option>
+            {/each}
+            </select>
+          </div>
+      
+          <div>
+            <label for="woj">Voivodeship</label>
+            <!-- svelte-ignore a11y-no-onchange -->
+            <select id="woj" bind:value={selected_wojewodztwo} on:change="{app_state.set_variable('wojewodztwo', selected_wojewodztwo.id)}">
+            {#each wojewodztwa as wojewodztwo}
+              <option value={wojewodztwo}>
+                {wojewodztwo.text}
+              </option>
+            {/each}
+            </select>
+          </div>
+      
+          <div>
+            Options:
             <ul>
-              <li>By voivodeship: shows distribution of foreign tourists within given region.</li>
-              <li>By country: shows distribution of destinations within given country of origin.</li>
-              <li>Total: shows total number of tourists by country of origin in the entire Poland.</li>
+              <li>
+                Mode:
+                <ul>
+                  <li>By voivodeship: shows distribution of foreign tourists within given region.</li>
+                  <li>By country: shows distribution of destinations within given country of origin.</li>
+                  <li>Total: shows total number of tourists by country of origin in the entire Poland.</li>
+                </ul>
+              </li>
+              <li>Year</li>
+              <li>Voivodeship (<em>województwo</em>): administrative region.</li>
             </ul>
-          </li>
-          <li>Year</li>
-          <li>Voivodeship (<em>województwo</em>): administrative region.</li>
-        </ul>
+          </div>
+          {#if $app_state['mode'] === 'total'}
+            <p>
+              The following table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
+            </p>
+          {:else if $app_state['mode'] == 'bycountry'}
+            <p>
+              The visualization shows destinations of tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
+              Percentage indicates the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
+              Table displays exact number of tourists from <strong>{country_display}</strong> by year.
+              Click on a flag to change the country.
+            </p>
+          {:else if $app_state['mode'] == 'bywojewodztwo'}
+            <p>
+              The visualization shows the ranking of countries within each voivodeship in year <strong>{$app_state['year']}</strong>.
+              Flags on the map indicate the top country of origin for each voivodeship.
+              The full ranking is currently displayed for <strong>{$app_state['wojewodztwo']}</strong> voivodeship (highlighted on the map).
+              Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
+            </p>
+          {/if}
+          <p>
+            View source code of this app on <a href="https://github.com/ppatrzyk/foreign-tourists">Github</a>.
+          </p>
+          <p>
+            Data source: <a href="https://bdl.stat.gov.pl/BDL/start">Główny Urząd Statystyczny</a>.
+          </p>
+          <p>
+            Note: This data is based on number of nights spent in hotels by foreign citizens. For details, see <a href="https://bdl.stat.gov.pl/BDL/start">documentation</a> (Category K18, Group G240, Subgroup P2759).
+          </p>
+        </div>
       </div>
-      {#if $app_state['mode'] === 'total'}
-        <p>
-          The following table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
-        </p>
-      {:else if $app_state['mode'] == 'bycountry'}
-        <p>
-          The visualization shows destinations of tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
-          Percentage indicates the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
-          Table displays exact number of tourists from <strong>{country_display}</strong> by year.
-          Click on a flag to change the country.
-        </p>
-      {:else if $app_state['mode'] == 'bywojewodztwo'}
-        <p>
-          The visualization shows the ranking of countries within each voivodeship in year <strong>{$app_state['year']}</strong>.
-          Flags on the map indicate the top country of origin for each voivodeship.
-          The full ranking is currently displayed for <strong>{$app_state['wojewodztwo']}</strong> voivodeship (highlighted on the map).
-          Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
-        </p>
-      {/if}
-      <p>
-        View source code of this app on <a href="https://github.com/ppatrzyk/foreign-tourists">Github</a>.
-      </p>
-      <p>
-        Data source: <a href="https://bdl.stat.gov.pl/BDL/start">Główny Urząd Statystyczny</a>.
-      </p>
-      <p>
-        Note: This data is based on number of nights spent in hotels by foreign citizens. For details, see <a href="https://bdl.stat.gov.pl/BDL/start">documentation</a> (Category K18, Group G240, Subgroup P2759).
-      </p>
     </div>
-    
 </div>
 
 <style>
-  div {
-    margin: 10px;
+  .mycard {
+    padding: 15px !important;
+    margin: 15px;
   }
-  .desc {
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 10px;
-    background-color:#e6ffe6;
-  }
+
   a {
     color: black;
     font-weight: 600;
