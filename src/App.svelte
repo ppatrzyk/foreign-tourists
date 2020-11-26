@@ -109,7 +109,7 @@
 							<TopCountries level="total"/>
 						{/if}
 					</div>
-					<div class="col-2">
+					<div class="col-1">
 						{#if $app_state.mode !== 'total'}
 							<br><br><br><br>
 							<Country country="RU" />
