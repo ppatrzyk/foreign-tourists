@@ -85,20 +85,25 @@
             {/each}
             </select>
           </div>
+          <h4 class="card-title">Current mode</h4>
           {#if $app_state['mode'] === 'total'}
-            <p>
-              The table shows ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
-            </p>
+            <div>
+              Ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
+            </div>
           {:else if $app_state['mode'] == 'bycountry'}
-            <p>
-              The visualization shows distribution of destinations within tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
-              Percentage indicates the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
+            <div>
+              Distribution of destinations among tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
+            </div>
+            <p class="additional-info">
+              Percentages indicate the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
               Table displays exact number of tourists from <strong>{country_display}</strong> by year.
               <strong>Click on a flag to change the country.</strong>
             </p>
           {:else if $app_state['mode'] == 'bywojewodztwo'}
-            <p>
-              The visualization shows the ranking of countries within each voivodeship in year <strong>{$app_state['year']}</strong>.
+            <div>
+              Ranking of countries within each voivodeship in <strong>{$app_state['year']}</strong>.
+            </div>
+            <p class="additional-info">
               Flags on the map indicate where do most tourists come from.
               The full ranking is currently displayed for <strong>{$app_state['wojewodztwo']}</strong> voivodeship (highlighted on the map).
               Percentage indicates what proportion of all tourists in a given voivodeship do tourists from given country account for.
@@ -127,5 +132,9 @@
   a {
     color: black;
     font-weight: 600;
+  }
+
+  .additional-info {
+    margin-top: 15px;
   }
 </style>
