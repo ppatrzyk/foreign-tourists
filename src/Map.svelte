@@ -10,8 +10,8 @@
 	const MAP_HEIGHT = 600;
 	// https://github.com/d3/d3-scale-chromatic
 	const color_scale = scaleSequential(interpolateHsl("#d6f5d6", "#051505"));
-	const missing_color = "#e6ffe6";
-	const picked_woj_color = '#66ff66'
+	const missing_color = "#e9ecef";
+	const picked_woj_color = '#c4ccd4'
 
 	// d3 update functions
 
