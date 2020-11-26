@@ -24,7 +24,7 @@ def get_country_ids():
     }
     response = requests.get(url, params=params, headers=HEADERS)
     # tuple of (variable_id, country_name) tuples
-    data = tuple((el.get('id'), el.get('n2')) for el in response.json().get('results'))
+    data = tuple((el.get('id'), el.get('n2')) for el in response.json().get('results') if el.get('n1') == 'turyści zagraniczni (nierezydenci)')
     return data
 
 def get_country_data(variable_id):
