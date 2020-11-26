@@ -88,11 +88,11 @@
           <h4 class="card-title">Current mode</h4>
           {#if $app_state['mode'] === 'total'}
             <div>
-              Ranking of countries by total number of tourists in year <strong>{$app_state['year']}</strong>.
+              Ranking of countries by total number of tourists in <strong>{$app_state['year']}</strong>.
             </div>
           {:else if $app_state['mode'] == 'bycountry'}
             <div>
-              Distribution of destinations among tourists from <strong>{country_display}</strong> in year <strong>{$app_state['year']}</strong>.
+              Distribution of destinations among tourists from <strong>{country_display}</strong> in <strong>{$app_state['year']}</strong>.
             </div>
             <p class="additional-info">
               Percentages indicate the popularity of given destination (voivodeship), relative to the entrire traffic to Poland from <strong>{country_display}</strong>.
