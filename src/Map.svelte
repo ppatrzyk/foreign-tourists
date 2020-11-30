@@ -6,8 +6,11 @@
 	import { scaleSequential } from 'd3-scale';
 	import { interpolateHsl } from 'd3-interpolate';
 
-	const MAP_WIDTH = 600;
-	const MAP_HEIGHT = 600;
+	const min_width = 1200;
+	const window_width  = Math.max(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, min_width);
+
+	const MAP_WIDTH = Math.round(8/12 * 7/12 * window_width);
+	const MAP_HEIGHT = MAP_WIDTH;
 	// https://github.com/d3/d3-scale-chromatic
 	const color_scale = scaleSequential(interpolateHsl("#d6f5d6", "#051505"));
 	const missing_color = "#e9ecef";
