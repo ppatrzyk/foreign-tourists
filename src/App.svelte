@@ -25,23 +25,24 @@
 
 <main>
 	<div class="row">
-		<h1 class="title">Foreign Tourists in Poland</h1>
+		<div class="col-10 offset-1">
+			<h1 class="title">Foreign Tourists in Poland</h1>
+		</div>
 	</div>
 	<div class="row">
-		<div class="col-3"><Control /></div>
+		<div class="col-3 offset-1">
+			<Control />
+		</div>
 		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
-			<div class="col-9">
+			<div class="col-7">
 				loading data...
 			</div>
 		{:else}
-			<div class="col-9">
+			<div class="col-7">
 				<!-- MAIN MAP CODE -->
 				<!-- row 1 -->
 				<div class="row">
-					<div class="col-2">
-						<!-- margin -->
-					</div>
-					<div class="col-1">
+					<div class="col-1 offset-2">
 						{#if $app_state.mode !== 'total'}
 							<Country country="DK" />
 						{/if}
@@ -124,10 +125,7 @@
 				</div>
 				<!-- row 3 -->
 				<div class="row">
-					<div class="col-3">
-						<!-- margin -->
-					</div>
-					<div class="col-1">
+					<div class="col-1 offset-3">
 						{#if $app_state.mode !== 'total'}
 							<Country country="SI" />
 						{/if}
@@ -160,8 +158,7 @@
 		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
 			<!-- pass -->
 		{:else}
-		<div class="col-3"></div>
-		<div class="col-9">
+		<div class="col-7 offset-4">
 			{#if $app_state.mode === 'bywojewodztwo'}
 				<TopCountries level="wojewodztwo"/>
 			{/if}
