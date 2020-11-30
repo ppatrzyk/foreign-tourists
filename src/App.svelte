@@ -28,13 +28,13 @@
 		<h1 class="title">Foreign Tourists in Poland</h1>
 	</div>
 	<div class="row">
-		<div class="col"><Control /></div>
+		<div class="col-3"><Control /></div>
 		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
 			<div class="col-9">
 				loading data...
 			</div>
 		{:else}
-			<div class="col-6">
+			<div class="col-9">
 				<!-- MAIN MAP CODE -->
 				<!-- row 1 -->
 				<div class="row">
@@ -154,14 +154,21 @@
 					</div>
 				</div>
 			</div>
-			<div class="col">
-				{#if $app_state.mode === 'bywojewodztwo'}
-					<TopCountries level="wojewodztwo"/>
-				{/if}
-				{#if $app_state.mode === 'bycountry'}
-					<TopCountries level="countryts"/>
-				{/if}
-			</div>
+		{/if}
+	</div>
+	<div class="row">
+		{#if Object.keys($country_codes).length === 0 || Object.keys($map_geojson).length === 0 || Object.keys($tourists).length === 0}
+			<!-- pass -->
+		{:else}
+		<div class="col-3"></div>
+		<div class="col-9">
+			{#if $app_state.mode === 'bywojewodztwo'}
+				<TopCountries level="wojewodztwo"/>
+			{/if}
+			{#if $app_state.mode === 'bycountry'}
+				<TopCountries level="countryts"/>
+			{/if}
+		</div>
 		{/if}
 	</div>
 </main>
